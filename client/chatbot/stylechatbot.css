@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+:root {
+  scroll-behavior: smooth;
+  --primary-clr-100: hsl(0, 0%, 100%);
+  --secondary-clr-500: hsl(358, 72%, 50%);
+  --secondary-clr-400: hsl(0, 60%, 40%);
+  --selection-clr: hsl(0, 60%, 30%);
+
+  --secondary-orange-clr: hsl(39, 92%, 52%);
+  --secondary-black-clr: hsl(0, 0%, 2%);
+}
+::selection {
+  background-color: var(--secondary-clr-400);
+  color: var(--primary-clr-100);
+}
+#app {
+  overflow-x: hidden;
+  height: 100dvh;
+  background-color: var(--selection-clr);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+/* hides scrollbar */
+
+.wrapper {
+  width: 100vw;
+  padding: 15px;
+}
+
+.ai {
+  background: var(--primary-clr-100);
+}
+
+.chat {
+  width: clamp(20rem, 60%, 80vw);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.profile {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+
+  background: #5436da;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ai .profile {
+  background: #10a37f;
+}
+
+.profile img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.message {
+  flex: 1;
+  color: var(--primary-clr-100);
+  font-size: 1.2rem;
+  overflow-x: scroll;
+  white-space: pre-wrap;
+}
+.ai .message {
+  color: var(--secondary-black-clr);
+}
+/* hides scrollbar */
+.message::-webkit-scrollbar {
+  display: none;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  width: clamp(20rem, 60vw, 100%);
+  margin-inline: auto;
+  padding: 0.6rem;
+  background: var(--secondary-clr-500);
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+
+  color: var(--primary-clr-100);
+  font-size: 18px;
+  padding: 10px;
+  background: transparent;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+::placeholder {
+  color: var(--primary-clr-100);
+}
+button {
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background: transparent;
+}
+
+form img {
+  width: 30px;
+  height: 30px;
+}

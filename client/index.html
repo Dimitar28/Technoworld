@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technoworld | Startup page</title>
+     <link rel="icon"  href="./chatbot/assets/comp-favicon.ico" />
+    <link rel="stylesheet" href="stylenavbar.css" />
+    <link rel="stylesheet" href="stylemaincontent.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <nav>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" class="nav-item"
+              ><i class="fa fa-home"></i> Home</a
+            >
+          </li>
+          <li class="dropdown">
+            <button class="nav-item nav-button">
+              <i class="fa fa-desktop"></i> Products
+            </button>
+            <div class="dropdown-content">
+              <a href="#" class="nav-item text-center">Computers</a>
+              <a href="#" class="nav-item text-center">Laptops</a>
+              <a href="#" class="nav-item text-center">Acessories</a>
+            </div>
+          </li>
+          <li>
+            <input
+              type="text"
+              id="search-input"
+              class="nav-search-input"
+              placeholder="Search products..."
+            />
+            <button class="toggle-search"><i class="fa fa-search"></i></button>
+          </li>
+          <li>
+            <a href="#" class="nav-item"
+              ><i class="fa fa-address-book-o"> </i> Contact</a
+            >
+          </li>
+          <li class="cart">
+            <a href="#" class="nav-item cart-button"
+              ><i class="fa fa-shopping-cart"></i> Cart
+              <span class="cart-count">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="scroll-tracker"></div>
+    </header>
+    <a href="#"> <i class="fa fa-arrow-circle-up fa-3x | back-to-top"></i></a>
+    <main>
+      <div class="notification text-center">
+        <h2>
+          We have just implemented a brand new chatbot! More information below.
+        </h2>
+        <button class="close-btn">Close</button>
+       <button class="go-to-button"><a href="#chatbot">Go to announcement!</a></button>
+      </div>
+      <form id="filter-form">
+        <label for="category">Filter by category:</label>
+        <select id="category">
+          <option value="all">All</option>
+          <option value="laptop">Laptop</option>
+          <option value="computer">Desktop</option>
+          <option value="monitor">Monitor</option>
+          <option value="acessories">Other acessories</option>
+          <!-- Add more options for the categories -->
+        </select>
+        <label for="sort">Sort by Price:</label>
+        <select id="sort">
+          <option value="none">None</option>
+          <option value="price-asc">Low to high</option>
+          <option value="price-desc">High to low</option>
+        </select>
+        <button type="submit">Apply</button>
+      </form>
+      <h2 class="feat text-center">Featured items</h2>
+      <section class="featured-components">
+        <div class="card text-center" data-price="1509" data-category="laptop">
+          <a href="index.html" class="card-link">
+            <img
+              src="img/hp-victus16.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Gaming laptop HP VICTUS 16 16.1 AMD RYZEN 7 5800H, RAM 16 GB, SSD
+              512 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS 11,
+              PERFORMANCE BLUE
+            </h3>
+            <p class="price-tag">Price:<span class="price">1509$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1599" data-category="laptop">
+          <a href="index.html" class="card-link">
+            <img src="img/Asus2.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Ultrabook ASUS Zenbook Flip OLED 14.0 INTEL CORE i7-1165G7, RAM 16
+              GB, SSD 1000 GB, INTEL IRIS XE GRAPHICS, WINDOWS 11 PRO, СИВ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1599$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1799" data-category="laptop">
+          <a href="" class="card-link">
+            <img src="img/Asus-ROG.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              Gaming laptop ASUS ROG Zephyrus G14 14.0 AMD RYZEN 9 5800HS, RAM
+              16 GB, SSD 1000 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS
+              10, ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">1799$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1899"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
+              GeForce RTX 3070, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1899$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1369"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
+              GeForce RTX 3060 Ti, 16 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1369$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1999"
+          data-category="computer"
+        >
+          <a href="index.html" class="card-link">
+            <img
+              src="img/Gplay-Fighter XT.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              gaming computer GPLAY Fighter XT Red INTEL CORE I5-11400F, FIGHTER
+              RADEON RX 6600XT, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1099" data-category="monitor">
+          <a href="" class="card-link">
+            <img src="img/Dell.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Монитор DELL AW3420DW-14 0.232 мм 178°/178°, IPS, 34.1 86.6 см
+              3440x1440 120 Hz 2.0 ms HDMI DisplayPort БЯЛ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1099$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="999" data-category="monitor">
+          <a href="" class="card-link">
+            <img
+              src="img/Asus-ROG-Zephyrus.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Монитор SAMSUNG LS28AG700NUXEN 144Hz 0.162 мм 178°/178°, IPS, 28.0
+              71.1 см 3840x2160 4K 144 Hz 1.0 ms HDMI, DisplayPort ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="2199"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img
+              src="img/EVGA-RTX3080.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Видеокарта EVGA GEFORCE RTX 3080 12GB FTW3 UG
+            </h3>
+            <p class="price-tag">Price:<span class="price">2199$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="599"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img src="img/i9.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">Процесор INTEL Core i9-10900 COMET LAKE</h3>
+            <p class="price-tag">Price:<span class="price">599$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="4999" data-category="laptop">
+          <a href="index.html" class="card-link">
+            <img
+              src="img/Asus-ROG-Zephyrus.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              gaming laptop ASUS ROG Zephyrus Duo 16 GX650RX-LB158X 16.0 AMD
+              RYZEN 9 6900HX RAM 32 GB SSD 2000 GB NVIDIA GEFORCE RTX3080Ti 16
+              GB GDDR6 WINDOWS 11 PRO ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">4999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1699" data-category="laptop">
+          <a href="" class="card-link">
+            <img src="img/HP-Spectre.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Лаптоп 2 в 1 HP SPECTRE X360 14-EA1003NU/597T8 13.5 INTEL CORE
+              i7-1195G7 RAM 16 GB SSD 1000 GB INTEL IRIS XE GRAPHICS WINDOWS 11
+              СРЕБРИСТ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1699$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="189"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img
+              src="img/Asus-TUF-Case.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Компютърна кутия ASUS TUF GAMING GT301 АRGB
+            </h3>
+            <p class="price-tag">Price:<span class="price">189$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1899"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
+              GeForce RTX 3070, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1899$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1369"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
+              GeForce RTX 3060 Ti, 16 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1369$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1509" data-category="laptop">
+          <a href="index.html" class="card-link">
+            <img
+              src="img/hp-victus16.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Gaming laptop HP VICTUS 16 16.1 AMD RYZEN 7 5800H, RAM 16 GB, SSD
+              512 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS 11,
+              PERFORMANCE BLUE
+            </h3>
+            <p class="price-tag">Price:<span class="price">1509$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1599" data-category="laptop">
+          <a href="" class="card-link">
+            <img src="img/Asus2.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Ultrabook ASUS Zenbook Flip OLED 14.0 INTEL CORE i7-1165G7, RAM 16
+              GB, SSD 1000 GB, INTEL IRIS XE GRAPHICS, WINDOWS 11 PRO, СИВ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1599$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1799" data-category="laptop">
+          <a href="" class="card-link">
+            <img src="img/Asus-ROG.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              Gaming laptop ASUS ROG Zephyrus G14 14.0 AMD RYZEN 9 5800HS, RAM
+              16 GB, SSD 1000 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS
+              10, ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">1799$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1899"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
+              GeForce RTX 3070, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1899$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1369"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
+              GeForce RTX 3060 Ti, 16 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1369$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1999"
+          data-category="computer"
+        >
+          <a href="index.html" class="card-link">
+            <img
+              src="img/Gplay-Fighter XT.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              gaming computer GPLAY Fighter XT Red INTEL CORE I5-11400F, FIGHTER
+              RADEON RX 6600XT, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1099" data-category="monitor">
+          <a href="" class="card-link">
+            <img src="img/Dell.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Монитор DELL AW3420DW-14 0.232 мм 178°/178°, IPS, 34.1 86.6 см
+              3440x1440 120 Hz 2.0 ms HDMI DisplayPort БЯЛ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1099$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="999" data-category="monitor">
+          <a href="" class="card-link">
+            <img
+              src="img/Asus-ROG-Zephyrus.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Монитор SAMSUNG LS28AG700NUXEN 144Hz 0.162 мм 178°/178°, IPS, 28.0
+              71.1 см 3840x2160 4K 144 Hz 1.0 ms HDMI, DisplayPort ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="2199"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img
+              src="img/EVGA-RTX3080.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Видеокарта EVGA GEFORCE RTX 3080 12GB FTW3 UG
+            </h3>
+            <p class="price-tag">Price:<span class="price">2199$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="599"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img src="img/i9.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">Процесор INTEL Core i9-10900 COMET LAKE</h3>
+            <p class="price-tag">Price:<span class="price">599$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="4999" data-category="laptop">
+          <a href="index.html" class="card-link">
+            <img
+              src="img/Asus-ROG-Zephyrus.jpg"
+              alt="Computer 1"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              gaming laptop ASUS ROG Zephyrus Duo 16 GX650RX-LB158X 16.0 AMD
+              RYZEN 9 6900HX RAM 32 GB SSD 2000 GB NVIDIA GEFORCE RTX3080Ti 16
+              GB GDDR6 WINDOWS 11 PRO ЧЕРЕН
+            </h3>
+            <p class="price-tag">Price:<span class="price">4999$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div class="card text-center" data-price="1699" data-category="laptop">
+          <a href="" class="card-link">
+            <img src="img/HP-Spectre.jpg" alt="Computer 2" class="card-image" />
+            <h3 class="card-name">
+              Лаптоп 2 в 1 HP SPECTRE X360 14-EA1003NU/597T8 13.5 INTEL CORE
+              i7-1195G7 RAM 16 GB SSD 1000 GB INTEL IRIS XE GRAPHICS WINDOWS 11
+              СРЕБРИСТ
+            </h3>
+            <p class="price-tag">Price:<span class="price">1699$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="189"
+          data-category="acessories"
+        >
+          <a href="" class="card-link">
+            <img
+              src="img/Asus-TUF-Case.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">
+              Компютърна кутия ASUS TUF GAMING GT301 АRGB
+            </h3>
+            <p class="price-tag">Price:<span class="price">189$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1899"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
+              GeForce RTX 3070, 8+8 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1899$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+        <div
+          class="card text-center"
+          data-price="1369"
+          data-category="computer"
+        >
+          <a href="" class="card-link">
+            <img src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
+            <h3 class="card-name">
+              gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
+              GeForce RTX 3060 Ti, 16 GB, 3200 MHz
+            </h3>
+            <p class="price-tag">Price:<span class="price">1369$</span></p>
+          </a>
+          <button class="add-to-cart">
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </section>
+      <!-- Newsletter -->
+      <section>
+        <form class="email-form text-center">
+          <h2 class="subscribe">Subscribe to our newsletter</h2>
+          <input
+            type="email"
+            class="newsletter-input"
+            placeholder="Enter your email address..."
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+    </main>
+    <!-- shopping page -->
+    <div class="shopping-page text-center" id="shopping-page">
+      <h2 class="feat">Shopping Cart Preview</h2>
+      <a href="chatbot.html"></a>
+      <div class="shopping-list"></div>
+      <div class="shopping-buttons">
+        <button class="checkout-button">Checkout</button>
+        <button class="back-button">Back</button>
+      </div>
+    </div>
+    <!-- Chatbot -->
+    <section class="chatbot text-center" id="chatbot">
+      <h2>Introducing our new chatbot-TechnoBot!</h2>
+      <div class="flex">
+        <img src="./img/chatbot.png" alt="" class="bot-img">
+        <p class="chatbot-descr">
+          We are extremely happy to introduce you our new chatbot, designed to
+          provide efficient customer service and assist with frequently asked
+          questions. Using advanced natural language processing, our chatbot can
+          provide information on products, services, and company policies and
+          even help with placing orders and scheduling appointments. Available
+          24/7, it allows customers to get the help they need at any time
+          without waiting for a customer service representative. We believe our
+          chatbot will enhance the customer experience and make it easier for
+          them to do business with us.
+        </p>
+      </div>
+      <button type="submit"><a href="./chatbot/index.html" target="_blank">Go talk to our  chatbot</a></button>
+    </section>
+    <!-- footer -->
+    <footer class="text-center">
+      <p>
+        Copyright &copy; <span id="year"></span>
+        <a href="index.html" class="nav-item">Technoworld</a>
+      </p>
+    </footer>
+  </body>
+</html>
