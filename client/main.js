@@ -197,6 +197,33 @@ emailForm.addEventListener(
     once: true,
   }
 );
+//easter egg section
+const easterEggForm = document.querySelector('.easter-egg-form');
+easterEggForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  checkValue()
+})
+function checkValue() {
+  const inputValue = document.getElementById("inputValue").value;
+  inputValue === "dino" ? window.location.href = "https://googledino28.netlify.app" : alert("Wrong input value")
+}
+const hints = ["For the second letter maybe you should check the feature section more carefully",
+  "For the third letter maybe you should check the bottom of the site",
+  "For the final letter maybe you should check the DevTools console"];
+const usedHints = [];
+const hintButton = document.getElementById("hintButton")
+hintButton.addEventListener("click", () => {
+  if (hints.length != 0) {
+    const index = Math.floor(Math.random() * hints.length);
+    const hint = hints[index];
+    usedHints.push(hint);
+    hints.splice(index, 1);
+    document.getElementById("hintContainer").innerHTML = hint;
+  } else {
+    alert("No more hints available");
+  }
+});
+console.log("Why are you here.There is nothing to see: %co", "text-decoration: underline");
 //getting the current year for the copyright text
 const year = document.querySelector("#year");
 year.textContent = new Date().getFullYear();

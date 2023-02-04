@@ -9,7 +9,7 @@
   justify-content: center;
   gap: clamp(0.8rem, 3vw, 4rem);
   list-style: none;
-  padding: 0.7rem;
+  padding: 0.6rem;
   font-size: clamp(0.9rem, 1.6vw, 2rem);
   background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
@@ -83,7 +83,7 @@
 }
 /*progress bar */
 .scroll-tracker {
-  height: 0.5rem;
+  height: 0.3rem;
   background-color: var(--secondary-orange-clr);
   transform-origin: left;
   border-radius: 100vw;

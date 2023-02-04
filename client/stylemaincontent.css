@@ -197,6 +197,41 @@ button[type="submit"] a{
 .custom{
   margin-block: 1rem;
 }
+.easter-egg-section{
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin-block: 1rem;
+  background-color: var(--secondary-clr-400);
+  color: var(--primary-clr-100);
+}
+.easter-egg-section h2{
+  margin-bottom: 1rem;
+}
+.easter-egg-section > p{
+  max-width: 80ch;
+  margin-inline: 1rem;
+}
+#hintButton {
+  padding: 10px 20px;
+  background-color: var(--secondary-orange-clr);
+  color: var(--secondary-black-clr);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+#hintContainer {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  background-color: var(--secondary-orange-clr);
+  color: var(--secondary-black-clr);
+  padding-inline: .2rem;
+}
+.special-letter{
+  border-bottom: 2px solid var(--secondary-clr-400);
+}
 footer {
   background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
