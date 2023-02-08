@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technoworld | Startup page</title>
-     <link rel="icon"  href="./chatbot/assets/comp-favicon.ico" />
+     <link rel="icon"  href="./assets/comp-favicon.ico" />
     <link rel="stylesheet" href="stylenavbar.css" />
     <link rel="stylesheet" href="stylemaincontent.css" />
     <link
@@ -43,7 +43,7 @@
             <button class="toggle-search"><i class="fa fa-search"></i></button>
           </li>
           <li>
-            <a href="login.html" class="nav-item"
+            <a class="nav-item" id="login_logout"
               ><i class="fa fa-address-book-o"> </i> Log in</a
             >
           </li>
@@ -74,7 +74,6 @@
           <option value="computer">Desktop</option>
           <option value="monitor">Monitor</option>
           <option value="acessories">Other acessories</option>
-          <!-- Add more options for the categories -->
         </select>
         <label for="sort">Sort by Price:</label>
         <select id="sort">
@@ -84,10 +83,11 @@
         </select>
         <button type="submit">Apply</button>
       </form>
+      
       <h2 class="feat text-center">Featured items</h2>
       <section class="featured-components">
-        <div class="card text-center" data-price="1509" data-category="laptop">
-          <a href="index.html" class="card-link">
+        <div class="card text-center" data-price="1509" data-category="laptop" style="--order:1">
+          <a href="product-page.html?&name=Gaming-laptop-HP-VICTUS-16-16.1-AMD-RYZEN-7-5800H-RAM-16-GB-SSD-512-GB-NVIDIA-GEFORCE-RTX3060-6-GB-GDDR6-WINDOWS-11-PERFORMANCE-BLUE &image=img/hp-victus16.jpg &price=1509" class="card-link">
             <img
               src="img/hp-victus16.jpg"
               alt="Computer 1"
@@ -104,8 +104,8 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1599" data-category="laptop">
-          <a href="index.html" class="card-link">
+        <div class="card text-center" data-price="1599" data-category="laptop" style="--order:2">
+          <a href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Asus2.jpg &price=1599" class="card-link">
             <img src="img/Asus2.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
               Ultrabook ASUS Zenbook Flip OLED 14.0 INTEL CORE i7-1165G7, RAM 16
@@ -117,8 +117,8 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1799" data-category="laptop">
-          <a href="" class="card-link">
+        <div class="card text-center" data-price="1799" data-category="laptop" style="--order:3">
+          <a href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Asus-ROG.jpg &price=1799" class="card-link">
             <img src="img/Asus-ROG.jpg" alt="Computer 3" class="card-image" />
             <h3 class="card-name">
               Gaming laptop ASUS ROG Zephyrus G14 14.0 AMD RYZEN 9 5800HS, RAM
@@ -131,12 +131,11 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"
           data-price="1899"
-          data-category="computer"
+          data-category="computer" style="--order:4"
         >
-          <a href="" class="card-link">
+      <a href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Acer-pred.jpg &price=1899" class="card-link">
             <img src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
             <h3 class="card-name">
               gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
@@ -148,12 +147,11 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"
           data-price="1369"
-          data-category="computer"
+          data-category="computer" style="--order:5"
         >
-          <a href="" class="card-link">
+        <a href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Acer-nitro.jpg &price=1369" class="card-link">
             <img src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
             <h3 class="card-name">
               gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
@@ -165,10 +163,9 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"
           data-price="1999"
-          data-category="computer"
+          data-category="computer"  style="--order:1"
         >
           <a href="index.html" class="card-link">
             <img
@@ -186,7 +183,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1099" data-category="monitor">
+        <div class="card text-center"  style="--order:2" data-price="1099" data-category="monitor">
           <a href="" class="card-link">
             <img src="img/Dell.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
@@ -199,7 +196,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="999" data-category="monitor">
+        <div class="card text-center"  style="--order:3" data-price="999" data-category="monitor">
           <a href="" class="card-link">
             <img
               src="img/Asus-ROG-Zephyrus.jpg"
@@ -216,8 +213,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:4"
           data-price="2199"
           data-category="acessories"
         >
@@ -236,8 +232,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:5"
           data-price="599"
           data-category="acessories"
         >
@@ -250,7 +245,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="4999" data-category="laptop">
+        <div class="card text-center"  style="--order:1" data-price="4999" data-category="laptop">
           <a href="index.html" class="card-link">
             <img
               src="img/Asus-ROG-Zephyrus.jpg"
@@ -268,7 +263,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1699" data-category="laptop">
+        <div class="card text-center"  style="--order:2" data-price="1699" data-category="laptop">
           <a href="" class="card-link">
             <img src="img/HP-Spectre.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
@@ -282,8 +277,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:3"
           data-price="189"
           data-category="acessories"
         >
@@ -302,8 +296,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:4"
           data-price="1899"
           data-category="computer"
         >
@@ -319,8 +312,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:5"
           data-price="1369"
           data-category="computer"
         >
@@ -336,7 +328,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1509" data-category="laptop">
+        <div class="card text-center"  style="--order:1" data-price="1509" data-category="laptop">
           <a href="index.html" class="card-link">
             <img
               src="img/hp-victus16.jpg"
@@ -354,7 +346,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1599" data-category="laptop">
+        <div class="card text-center"  style="--order:2" data-price="1599" data-category="laptop">
           <a href="" class="card-link">
             <img src="img/Asus2.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
@@ -367,7 +359,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1799" data-category="laptop">
+        <div class="card text-center"  style="--order:3" data-price="1799" data-category="laptop">
           <a href="" class="card-link">
             <img src="img/Asus-ROG.jpg" alt="Computer 3" class="card-image" />
             <h3 class="card-name">
@@ -381,8 +373,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:4"
           data-price="1899"
           data-category="computer"
         >
@@ -398,8 +389,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:5"
           data-price="1369"
           data-category="computer"
         >
@@ -415,8 +405,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:1"
           data-price="1999"
           data-category="computer"
         >
@@ -436,7 +425,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1099" data-category="monitor">
+        <div class="card text-center"  style="--order:2" data-price="1099" data-category="monitor">
           <a href="" class="card-link">
             <img src="img/Dell.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
@@ -449,7 +438,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="999" data-category="monitor">
+        <div class="card text-center"  style="--order:3" data-price="999" data-category="monitor">
           <a href="" class="card-link">
             <img
               src="img/Asus-ROG-Zephyrus.jpg"
@@ -466,8 +455,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:4"
           data-price="2199"
           data-category="acessories"
         >
@@ -486,8 +474,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:5"
           data-price="599"
           data-category="acessories"
         >
@@ -500,7 +487,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="4999" data-category="laptop">
+        <div class="card text-center"  style="--order:1" data-price="4999" data-category="laptop">
           <a href="index.html" class="card-link">
             <img
               src="img/Asus-ROG-Zephyrus.jpg"
@@ -518,7 +505,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="1699" data-category="laptop">
+        <div class="card text-center"  style="--order:2" data-price="1699" data-category="laptop">
           <a href="" class="card-link">
             <img src="img/HP-Spectre.jpg" alt="Computer 2" class="card-image" />
             <h3 class="card-name">
@@ -532,8 +519,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:3"
           data-price="189"
           data-category="acessories"
         >
@@ -552,8 +538,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:4"
           data-price="1899"
           data-category="computer"
         >
@@ -569,8 +554,7 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div
-          class="card text-center"
+        <div class="card text-center"  style="--order:5"
           data-price="1369"
           data-category="computer"
         >
@@ -603,7 +587,7 @@
     <!-- shopping page -->
     <div class="shopping-page text-center" id="shopping-page">
       <h2 class="feat">Shopping Cart Preview</h2>
-      <a href="chatbot.html"></a>
+
       <div class="shopping-list"></div>
       <div class="shopping-buttons">
         <button class="checkout-button">Checkout</button>

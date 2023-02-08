@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="product-image"></div>
+<div id="product-name"></div>
+<div id="product-description"></div>
+<div id="product-price"></div>
+<script>
+    validateQueryString(location.search);
+
+    const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+const productName = urlParams.get("name");
+const productImage = urlParams.get("image");
+const productDescription = urlParams.get("description");
+const productPrice = urlParams.get("price");
+
+document.querySelector("#product-image").innerHTML = `<img src="${productImage}" alt="${productName}">`;
+document.querySelector("#product-name").innerHTML = productName;
+document.querySelector("#product-description").innerHTML = productDescription;
+document.querySelector("#product-price").innerHTML = `Price: $${productPrice}`;
+function validateQueryString(query) {
+  const validTypes = ['string', 'number'];
+  const queryParams = new URLSearchParams(query);
+
+  for (const [key, value] of queryParams) {
+    if (!validTypes.includes(typeof value)) {
+      throw new Error(`Invalid type for ${key}: ${typeof value}. Only ${validTypes.join(' and ')} are allowed.`);
+    }
+  }
+
+  return true;
+}
+
+</script>
+</body>
+</html>

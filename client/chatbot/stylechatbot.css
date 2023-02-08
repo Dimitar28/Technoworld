@@ -10,7 +10,7 @@
   scroll-behavior: smooth;
   --primary-clr-100: hsl(0, 0%, 100%);
   --secondary-clr-500: hsl(358, 72%, 50%);
-  --secondary-clr-400: hsl(0, 60%, 40%);
+  --secondary-clr-400: #a32929;
   --selection-clr: hsl(0, 60%, 30%);
 
   --secondary-orange-clr: hsl(39, 92%, 52%);
@@ -86,7 +86,7 @@
   display: none;
 }
 
-form {
+.chat-form{
   margin-top: 1rem;
   display: flex;
   width: clamp(20rem, 60vw, 100%);

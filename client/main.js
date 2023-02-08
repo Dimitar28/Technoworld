@@ -2,12 +2,27 @@ const buttons = document.querySelectorAll(".add-to-cart");
 const shoppingList = document.querySelector(".shopping-list");
 const mainPage = document.querySelector("main");
 const shoppingPage = document.querySelector(".shopping-page");
+const easterEggSection = document.querySelector(".easter-egg-section")
 const productContainer = document.querySelector(".featured-components");
 let products = document.querySelectorAll(".card");
 
+const loginLogoutLink = document.querySelector("#login_logout");
+const loginLogoutLinkText = document.querySelector("#login_logout").textContent;
+console.log(loginLogoutLinkText)
+loginLogoutLink.addEventListener("click", () => {
+  if (loginLogoutLinkText === "  Log in") {
+    loginLogoutLink.href = "Login.html"
+    loginLogoutLink.innerHTML = `<i class="fa fa-address-book-o"> </i> Log out`
+  } else {
+    loginLogoutLink.href = "index.html"
+    loginLogoutLink.innerHTML = `<i class="fa fa-address-book-o"> </i> Log in`
+  }
+
+})
 const shoppingItems = [];
 const storedShoppingItems = JSON.parse(localStorage.getItem("shoppingItems"));
-
+//user
+const user = JSON.parse(localStorage.getItem("user"))
 // Check if there are any stored shopping items
 if (storedShoppingItems !== null) {
   // Add the stored items to the shopping list
@@ -37,7 +52,7 @@ function createElement(item) {
   const itemElement = document.createElement("div");
   itemElement.classList.add("shopping-item", "text-center");
   itemElement.innerHTML = `
-    <div class="card ">
+    <div class="card show">
     <a href="index.html" class="card-link">
     <img src="${item.image}" class="card-image" alt="${item.name}">
     <h3 class="card-name">${item.name}</h3>
@@ -69,6 +84,7 @@ cartButton.addEventListener("click", goToShoppingPage);
 function goToShoppingPage() {
   shoppingPage.style.display = "block";
   mainPage.style.display = "none";
+  easterEggSection.style.display = "none";
 }
 function CheckOutItems() {
   const checkoutButton = document.querySelector(".checkout-button");
@@ -77,9 +93,12 @@ function CheckOutItems() {
     for (let i = 0; i < shoppingItems.length; i++) {
       totalPrice += parseFloat(shoppingItems[i].price);
     }
-    shoppingItems.length === 0
-      ? alert("Your shopping cart is empty!")
-      : alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
+    if (shoppingItems.length === 0) alert("Your shopping cart is empty!")
+    else if (!user) {
+      alert("Log in with your account to purchase the selected items")
+      return
+    }
+    else alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
     shoppingList.innerHTML = "";
     shoppingItems.length = 0;
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
@@ -87,8 +106,7 @@ function CheckOutItems() {
     shoppingList.style.display = "none";
   });
 }
-CheckOutItems();
-
+CheckOutItems()
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
   backToMainPage();
@@ -117,7 +135,6 @@ const notification = document.querySelector(".notification");
 const closeBtn = document.querySelector(".close-btn");
 closeBtn.addEventListener("click", () => {
   notification.style.display = "none";
-  localStorage.setItem("message", notification.style.display);
 });
 //filter/sort form
 let originalProducts;
@@ -153,6 +170,7 @@ function filterAndSortProducts() {
   });
   displayProducts(filteredProducts); // display the filtered and sorted products
 }
+
 const searchInput = document.querySelector("#search-input");
 searchInput.addEventListener("keyup", handleSearch);
 function handleSearch(e) {
@@ -174,6 +192,22 @@ function displayProducts(products) {
     productContainer.appendChild(product);
   });
 }
+//animating the products
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("show", entry.isIntersecting);
+      if (entry.isIntersecting) observer.unobserve(entry.target);
+    });
+  },
+  {
+    threshold: 0.3,
+  }
+);
+products.forEach((product) => {
+  observer.observe(product);
+});
+
 const backToTopButton = document.querySelector(".back-to-top");
 window.addEventListener("scroll", () => {
   backToTopButton.classList.toggle("active", window.scrollY > 700);
@@ -209,18 +243,26 @@ function checkValue() {
 }
 const hints = ["For the second letter maybe you should check the feature section more carefully",
   "For the third letter maybe you should check the bottom of the site",
-  "For the final letter maybe you should check the DevTools console"];
+  "For the final letter maybe you should check the DevTools console.If you are on mobile,this hint won't work but we are sure you can guess the word"];
 const usedHints = [];
+const hintContainer = document.getElementById("hintContainer")
 const hintButton = document.getElementById("hintButton")
 hintButton.addEventListener("click", () => {
   if (hints.length != 0) {
+    handleHints();
+  } else {
+    alert("No more hints available");
+  }
+  function handleHints() {
     const index = Math.floor(Math.random() * hints.length);
     const hint = hints[index];
     usedHints.push(hint);
     hints.splice(index, 1);
-    document.getElementById("hintContainer").innerHTML = hint;
-  } else {
-    alert("No more hints available");
+    hintContainer.innerHTML = hint + " <i class='fa fa-close'> </i>";
+    const closeHintButton = document.querySelector('.fa-close');
+    closeHintButton.addEventListener('click', () => {
+      hintContainer.innerHTML = ""
+    })
   }
 });
 console.log("Why are you here.There is nothing to see: %co", "text-decoration: underline");
