@@ -1,28 +1,29 @@
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
-const signUpFormButton = document.querySelector("#form-sign-up-btn");
-const container = document.querySelector(".container");
 const signUpForm = document.querySelector(".sign-up-form")
 const signInForm = document.querySelector(".sign-in-form");
-
+const passwordInputs = document.querySelectorAll("input[type=password]")
+const viewPassButtons = document.querySelectorAll(".view-pass");
+const container = document.querySelector(".container");
 const user = JSON.parse(localStorage.getItem("user"))
-console.log(user)
 
 //Sign up form
 signUpForm.addEventListener("submit", e => {
   e.preventDefault();
   const signUpUserName = document.querySelector("#sign-up-username").value;
   const signUpPassword = document.querySelector("#sign-up-password").value;
+  createUser(signUpUserName, signUpPassword)
+})
+function createUser(userName, password) {
+  //Hash password before saving to local storage
   const signUpUser = {
-    signUpUserName: signUpUserName,
-    signUpPassword: signUpPassword
+    signUpUserName: userName,
+    signUpPassword: password
   }
-  console.log(signUpUser);
+  if (userName === '' || password === '') return alert("Enter your information");
   localStorage.setItem("user", JSON.stringify(signUpUser))
-})
-signUpFormButton.addEventListener("click", () => {
-  window.location.href = "http://127.0.0.1:5173/login.html"
-})
+  window.location.href = "login.html"
+}
 sign_up_btn.addEventListener("click", () => {
   container.classList.add("sign-up-mode");
 });
@@ -31,20 +32,34 @@ signInForm.addEventListener("submit", e => {
   e.preventDefault();
   const signInUserName = document.querySelector("#sign-in-username").value;
   const signInPassword = document.querySelector("#sign-in-password").value
-  const signInUser = {
-    signInUserName: signInUserName,
-    signInPassword: signInPassword
-  }
-  if (signInUserName === "" && signInPassword === "") alert("Enter username and password")
-  else if (signInUser.signInUserName !== user.signUpUserName && signInUser.signInPassword !== user.signUpPassword)
-    alert("Incorrect username and password")
-  else if (signInUser.signInUserName !== user.signUpUserName) alert("Incorrect username")
-  else if (signInUser.signInPassword !== user.signUpPassword) alert("Incorrect password")
-  else {
-    window.location.href = "http://127.0.0.1:5173/index.html";
-
-  }
+  authUser(signInUserName, signInPassword)
 })
+function authUser(userName, password) {
+  if (userName === "" && password === "") return alert("Enter username and password");
+  if (userName !== user.signUpUserName && password !== user.signUpPassword) return alert("Incorrect username and password");
+  if (userName !== user.signUpUserName) return alert("Incorrect username");
+  if (password !== user.signUpPassword) return alert("Incorrect password");
+  else {
+    window.location.href = "index.html";
+  }
+}
 sign_in_btn.addEventListener("click", () => {
   container.classList.remove("sign-up-mode");
 });
+//password view
+viewPassButtons.forEach(viewPassButton => {
+  viewPassButton.addEventListener("click", () => {
+    togglePasswordVisibility(viewPassButton);
+  })
+})
+function togglePasswordVisibility(button) {
+  passwordInputs.forEach(passwordInput => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      button.innerHTML = '<i class="fa fa-eye-slash"></i>';
+    } else {
+      passwordInput.type = "password";
+      button.innerHTML = '<i class="fa fa-eye"></i>';
+    }
+  })
+}

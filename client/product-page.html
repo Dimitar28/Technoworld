@@ -5,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styleproductpage.css">
 </head>
 <body>
-    <div id="product-image"></div>
-<div id="product-name"></div>
-<div id="product-description"></div>
-<div id="product-price"></div>
+  <main>
+    <section class="product-info text-center">
+      <div id="product-image"></div>
+      <div class="product-descr">
+        <h3 id="product-name"></h3>
+        <p>Безплатна доставка до пощенски код 1000</p>
+          <p id="product-price"></p>
+          <button class="add-to-cart">
+        <i class="fa fa-shopping-cart"></i> Add to Cart
+        </button>
+      </div>
+    </section>
+  </main>
 <script>
     validateQueryString(location.search);
 
@@ -23,7 +33,6 @@ const productPrice = urlParams.get("price");
 
 document.querySelector("#product-image").innerHTML = `<img src="${productImage}" alt="${productName}">`;
 document.querySelector("#product-name").innerHTML = productName;
-document.querySelector("#product-description").innerHTML = productDescription;
 document.querySelector("#product-price").innerHTML = `Price: $${productPrice}`;
 function validateQueryString(query) {
   const validTypes = ['string', 'number'];

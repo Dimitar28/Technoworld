@@ -5,24 +5,32 @@ const shoppingPage = document.querySelector(".shopping-page");
 const easterEggSection = document.querySelector(".easter-egg-section")
 const productContainer = document.querySelector(".featured-components");
 let products = document.querySelectorAll(".card");
+const user = JSON.parse(localStorage.getItem("user"))
 
-const loginLogoutLink = document.querySelector("#login_logout");
-const loginLogoutLinkText = document.querySelector("#login_logout").textContent;
-console.log(loginLogoutLinkText)
+//managing login/logout status
+const loginLogoutLink = document.querySelector(".login-logout");
 loginLogoutLink.addEventListener("click", () => {
-  if (loginLogoutLinkText === "  Log in") {
-    loginLogoutLink.href = "Login.html"
-    loginLogoutLink.innerHTML = `<i class="fa fa-address-book-o"> </i> Log out`
+  if (loginLogoutLink.innerHTML === '<i class="fa fa-address-book-o"> </i> Log in') {
+    logIn(loginLogoutLink)
   } else {
-    loginLogoutLink.href = "index.html"
-    loginLogoutLink.innerHTML = `<i class="fa fa-address-book-o"> </i> Log in`
+    logOut(loginLogoutLink);
   }
-
 })
+function logIn(link) {
+  link.innerHTML = '<i class="fa fa-address-book-o"> </i> Log out';
+  link.href = "Login.html";
+  localStorage.setItem("loginState", "Log Out");
+}
+function logOut(link) {
+  link.innerHTML = '<i class="fa fa-address-book-o"> </i> Log in';
+  link.href = "index.html";
+  localStorage.setItem("loginState", "Log In");
+}
+const loginState = localStorage.getItem("loginState");
+if (loginState === "Log Out") loginLogoutLink.innerHTML = '<i class="fa fa-address-book-o"> </i> Log out';
+
 const shoppingItems = [];
 const storedShoppingItems = JSON.parse(localStorage.getItem("shoppingItems"));
-//user
-const user = JSON.parse(localStorage.getItem("user"))
 // Check if there are any stored shopping items
 if (storedShoppingItems !== null) {
   // Add the stored items to the shopping list
@@ -34,7 +42,7 @@ if (storedShoppingItems !== null) {
 }
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    addToCart(e.target);
+    addToCart(e.target); // adds the product to the cart
   });
 });
 function addToCart(button) {
@@ -42,8 +50,8 @@ function addToCart(button) {
   const itemName = button.parentElement.querySelector(".card-name").textContent;
   const itemImage = button.parentElement.querySelector(".card-image").src;
   const itemPrice = button.parentElement.querySelector(".price").textContent;
-  const item = { name: itemName, image: itemImage, price: itemPrice }; // Create an object representing the item
-  shoppingItems.push(item); // Add the element to the array of shopping items
+  const item = { name: itemName, image: itemImage, price: itemPrice }; // Create an object representing the item/product
+  shoppingItems.push(item); // Add the item to the array of shopping items
   localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
 
   createElement(item);
@@ -61,7 +69,7 @@ function createElement(item) {
     <button class="remove-button"><i class="fa fa-trash-o"></i> Remove Item</button>
     </div>
   `;
-  shoppingList.appendChild(itemElement);
+  shoppingList.appendChild(itemElement); //appending the created element to the DOM
   RemoveItems(itemElement);
   updateCartCount();
 }
@@ -89,23 +97,24 @@ function goToShoppingPage() {
 function CheckOutItems() {
   const checkoutButton = document.querySelector(".checkout-button");
   checkoutButton.addEventListener("click", () => {
-    let totalPrice = 0;
-    for (let i = 0; i < shoppingItems.length; i++) {
-      totalPrice += parseFloat(shoppingItems[i].price);
+    if (shoppingItems.length === 0 || !user) {
+      if (shoppingItems.length === 0) {
+        alert("Your shopping cart is empty!");
+      } else {
+        alert("Log in with your account to purchase the selected items");
+      }
+      return;
     }
-    if (shoppingItems.length === 0) alert("Your shopping cart is empty!")
-    else if (!user) {
-      alert("Log in with your account to purchase the selected items")
-      return
-    }
-    else alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
-    shoppingList.innerHTML = "";
+    const totalPrice = shoppingItems.reduce((price, item) => price + parseFloat(item.price), 0);
+    alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
     shoppingItems.length = 0;
+    shoppingList.innerHTML = ""
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
-    updateCartCount();
     shoppingList.style.display = "none";
+    updateCartCount();
   });
 }
+
 CheckOutItems()
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
@@ -266,6 +275,17 @@ hintButton.addEventListener("click", () => {
   }
 });
 console.log("Why are you here.There is nothing to see: %co", "text-decoration: underline");
+//impoving the focus functionality on certain buttons
+const ctaButton = document.querySelector(".cta");
+const ctaButton1 = document.querySelector(".cta-1");
+const ctaLink = document.querySelector(".cta-link");
+const ctaLink1 = document.querySelector(".cta-link-1");
+ctaButton.addEventListener("click", () => {
+  ctaLink.click();
+})
+ctaButton1.addEventListener("click", () => {
+  ctaLink1.click();
+})
 //getting the current year for the copyright text
 const year = document.querySelector("#year");
 year.textContent = new Date().getFullYear();

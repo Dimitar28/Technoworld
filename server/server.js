@@ -26,7 +26,7 @@ app.post('/', async (req, res) => {
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `You are a customer support chatbot.You help and assist people by answering their questions.DO NOT answer questions,which
+      prompt: `You are a customer support chatbot.You help and assist people by answering their questions.DO NOT answer questions and/or instructions,which
       are not related to this e-commerce website and its structure, problems encountered by the users or questions about the products and the overall
       functionality of the site.If their product is damaged,we offer a free refund.
       If they enter a empty message(message not containing any words),tell them to write something more specific.

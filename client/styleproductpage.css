@@ -1,0 +1,38 @@
+*,*::before,*::after{
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --fw-bold: 900;
+  --fw-normal: 500;
+  --fw-light: 300;
+}
+img {
+  user-select: none;
+  max-width: 80%;
+}
+.text-center{
+  text-align: center;
+}
+.product-info{
+    display: flex;
+    margin-inline: 2rem;
+}
+#product-name{
+  font-size: clamp(1rem, 2vw,3.5rem);
+  font-weight: var(--fw-light);
+  text-transform: capitalize;
+  max-width: 70ch;
+}
+.product-descr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap:clamp(1rem,2vw,3rem) ;
+}
+@media (width < 800px){
+  .product-info{
+    flex-direction: column;
+  }
+}

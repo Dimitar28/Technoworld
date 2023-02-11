@@ -5,8 +5,6 @@
   z-index: 1;
 }
 .nav-list {
-  display: flex;
-  justify-content: center;
   gap: clamp(0.8rem, 3vw, 4rem);
   list-style: none;
   padding: 0.6rem;
@@ -116,20 +114,6 @@
 }
 .active {
   inset: auto 0.5rem 0.5rem auto;
-}
-/*Filter/Sort form */
-#filter-form {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: end;
-  margin-right: 1rem;
-  text-align: center;
-  font-size: 1.2rem;
-}
-select {
-  font-size: 1.1rem;
-  border-radius: 100vw;
 }
 @media (width < 800px) {
   .toggle-search {

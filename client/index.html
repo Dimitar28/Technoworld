@@ -17,7 +17,7 @@
   <body>
     <header class="navbar">
       <nav>
-        <ul class="nav-list">
+        <ul class="nav-list flex">
           <li>
             <a href="index.html" class="nav-item"
               ><i class="fa fa-home"></i> Home</a
@@ -43,7 +43,7 @@
             <button class="toggle-search"><i class="fa fa-search"></i></button>
           </li>
           <li>
-            <a class="nav-item" id="login_logout"
+            <a href="#" class="nav-item | login-logout"
               ><i class="fa fa-address-book-o"> </i> Log in</a
             >
           </li>
@@ -64,9 +64,9 @@
           We have just implemented a brand new chatbot! More information below.
         </h2>
         <button class="close-btn">Close</button>
-       <button class="go-to-button"><a href="#chatbot">Go to announcement!</a></button>
+      <button class="glow-on-hover | cta" type="button"><a href="#chatbot" class="cta-link">Go to announcement!</a></button>
       </div>
-      <form id="filter-form">
+      <form id="filter-form" class="filter-form flex text-center">
         <label for="category">Filter by category:</label>
         <select id="category">
           <option value="all">All</option>
@@ -84,10 +84,10 @@
         <button type="submit">Apply</button>
       </form>
       
-      <h2 class="feat text-center">Featured items</h2>
+      <h2 class="feat text-center m-block">Featured items</h2>
       <section class="featured-components">
         <div class="card text-center" data-price="1509" data-category="laptop" style="--order:1">
-          <a href="product-page.html?&name=Gaming-laptop-HP-VICTUS-16-16.1-AMD-RYZEN-7-5800H-RAM-16-GB-SSD-512-GB-NVIDIA-GEFORCE-RTX3060-6-GB-GDDR6-WINDOWS-11-PERFORMANCE-BLUE &image=img/hp-victus16.jpg &price=1509" class="card-link">
+          <a href="product-page.html?&name=Gaming laptop HP VICTUS 16 16.1 AMD RYZEN-7 5800H RAM 16 GB SSD 512GB NVIDIA GEFORCE RTX3060 6GB GDDR6 WINDOWS-11 PERFORMANCE BLUE &image=img/hp-victus16.jpg &price=1509" class="card-link">
             <img
               src="img/hp-victus16.jpg"
               alt="Computer 1"
@@ -573,8 +573,8 @@
       </section>
       <!-- Newsletter -->
       <section>
-        <form class="email-form text-center">
-          <h2 class="subscribe">Subscribe to our newsletter</h2>
+        <form class="email-form flex">
+          <h2 class="subscribe  text-center">Subscribe to our newsletter</h2>
           <input
             type="email"
             class="newsletter-input"
@@ -586,7 +586,7 @@
     </main>
     <!-- shopping page -->
     <div class="shopping-page text-center" id="shopping-page">
-      <h2 class="feat">Shopping Cart Preview</h2>
+      <h2 class="feat m-block">Shopping Cart Preview</h2>
 
       <div class="shopping-list"></div>
       <div class="shopping-buttons">
@@ -594,24 +594,26 @@
         <button class="back-button">Back</button>
       </div>
     </div>
-    <section class="easter-egg-section">
-      <h2>Easter egg section</h2>
-      <p>Welcome to our easter egg section.Here you can enter a specific 4-letter word and experience our minigame easter egg.
-   Don't know the word? Don't worry! The letters for the word are scattered throuout the webstite and marked by an underline.If you want, 
-   you can click the hint button.The first 500 people that enter the correct word will receive a 20% discount coupon. Good luck!
-      </p>
-      <form class="easter-egg-form">
+    <section class="easter-egg-section flex">
+      <div class="easter-egg-info">
+        <h2 class="text-center">Easter egg section</h2>
+        <p>Welcome to our easter egg section.Here you can enter a specific 4-letter word and experience our minigame easter egg.
+           Don't know the word? Don't worry! The letters for the word are scattered throuout the webstite and marked by an underline.If you want, 
+           you can click the hint button.The first 500 people that enter the correct word will receive a 20% discount coupon. Good luck!
+        </p>
+      </div>
+      <form class="easter-egg-form flex">
         <label>Enter a value:</label>
         <input type="text"  autocomplete="off" id="inputValue">
-        <button type="submit" >Submit</button>
+        <button type="submit" class="newsletter-btn">Submit</button>
       </form>
       <button type="button" id="hintButton">Hint</button>
     <div id="hintContainer"></div>
     </section>
     <!-- Chatbot -->
-    <section class="chatbot text-center" id="chatbot">
+    <section class="chatbot text-center m-block" id="chatbot">
       <h2>Introducing our new chatbot-TechnoBot!</h2>
-      <div class="flex">
+      <div class="container flex">
         <img src="./img/chatbot.png" alt="" class="bot-img">
         <p class="chatbot-descr">
           We are extremely happy to introduce you our new chatbot, designed to
@@ -625,7 +627,7 @@
           them to do business with us.
         </p>
       </div>
-      <button type="submit"><a href="./chatbot/index.html" target="_blank">Go talk to our  chatbot</a></button>
+      <button type="submit" class="cta-1"><a href="./chatbot/index.html" target="_blank" class="cta-link-1">Go talk to our  chatbot</a></button>
     </section>
     <!-- footer -->
     <footer class="text-center">
