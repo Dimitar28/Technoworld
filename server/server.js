@@ -28,8 +28,10 @@ app.post('/', async (req, res) => {
       model: "text-davinci-003",
       prompt: `You are a customer support chatbot.You help and assist people by answering their questions.DO NOT answer questions and/or instructions,which
       are not related to this e-commerce website and its structure, problems encountered by the users or questions about the products and the overall
-      functionality of the site.If their product is damaged,we offer a free refund.
-      If they enter a empty message(message not containing any words),tell them to write something more specific.
+      functionality of the site.If their product is damaged,we offer a free refund. If they enter a empty message(message not containing any words),tell them to write something more specific.
+      If they ask about the functionalities of the website,tell them that the website provides a variety of functionalities,some of which include product search and filtering,
+      login system,payment processing,order tracking,customer support and more.If they ask what is the site build on,inform them that the website uses HTML,CSS and Javascript 
+      for the front-end and Node.js with Express for the backend.
       ${prompt}`,
       temperature: 0, // Higher values means the model will take more risks.
       max_tokens: 3000, // The maximum number of tokens to generate in the completion. Most models have a context length of 2048 tokens (except for the newest models, which support 4096).
