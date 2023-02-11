@@ -20,6 +20,33 @@
   background-color: var(--secondary-clr-300);
   color: var(--primary-clr-100);
 }
+.loading {
+ display: grid;
+ place-items: center;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  z-index: 9;
+}
+.loading-spinner {
+  border-top: 4px solid var(--secondary-clr-400);
+  border-radius: 50%;
+  width: 5rem;
+  aspect-ratio: 1;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% {
+     transform: rotate(360deg); 
+    }
+}
+
 body {
   overflow-x: hidden;
   font-family: sans-serif;
@@ -270,9 +297,9 @@ button[type="submit"] a{
   gap: 1rem;
 }
 #inputValue{
-  width: clamp(20rem, 30vw, 100%);
+  width: clamp(18rem, 30vw, 100%);
 }
-.newsletter-btn:is(:hover, :focus){
+.newsletter-btn:is(:hover, :focus-visible){
   background-color: var(--primary-clr-100);
   color: var(--secondary-clr-900);
 }
@@ -313,6 +340,7 @@ footer {
   flex-wrap: wrap;
 }
 .shopping-item {
+  position: relative;
   width: clamp(10.8rem, 25vw, 50%);
 }
 .shopping-buttons {

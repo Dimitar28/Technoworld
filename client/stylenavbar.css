@@ -5,10 +5,10 @@
   z-index: 1;
 }
 .nav-list {
-  gap: clamp(0.8rem, 3vw, 4rem);
+  gap: clamp(0.7rem, 3vw, 4rem);
   list-style: none;
   padding: 0.6rem;
-  font-size: clamp(0.9rem, 1.6vw, 2rem);
+  font-size: clamp(0.87rem, 1.6vw, 2rem);
   background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
 }
@@ -55,7 +55,7 @@
 .nav-button {
   border: 0;
   background-color: transparent;
-  font-size: clamp(0.8rem, 1.6vw, 1.7rem);
+ font-size: clamp(0.9rem, 1.6vw, 2rem);
 }
 .dropdown-content a {
   display: block;

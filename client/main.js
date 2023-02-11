@@ -6,28 +6,32 @@ const easterEggSection = document.querySelector(".easter-egg-section")
 const productContainer = document.querySelector(".featured-components");
 let products = document.querySelectorAll(".card");
 const user = JSON.parse(localStorage.getItem("user"))
-
+//loader
+window.addEventListener("DOMContentLoaded", function () {
+  const loading = document.querySelector(".loading");
+  loading.style.display = "none";
+});
 //managing login/logout status
 const loginLogoutLink = document.querySelector(".login-logout");
 loginLogoutLink.addEventListener("click", () => {
-  if (loginLogoutLink.innerHTML === '<i class="fa fa-address-book-o"> </i> Log in') {
+  if (loginLogoutLink.innerHTML === '<i class="fa-regular fa-address-book"> </i> Log in') {
     logIn(loginLogoutLink)
   } else {
     logOut(loginLogoutLink);
   }
 })
 function logIn(link) {
-  link.innerHTML = '<i class="fa fa-address-book-o"> </i> Log out';
+  link.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log out';
   link.href = "Login.html";
   localStorage.setItem("loginState", "Log Out");
 }
 function logOut(link) {
-  link.innerHTML = '<i class="fa fa-address-book-o"> </i> Log in';
+  link.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log in';
   link.href = "index.html";
   localStorage.setItem("loginState", "Log In");
 }
 const loginState = localStorage.getItem("loginState");
-if (loginState === "Log Out") loginLogoutLink.innerHTML = '<i class="fa fa-address-book-o"> </i> Log out';
+if (loginState === "Log Out") loginLogoutLink.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log out';
 
 const shoppingItems = [];
 const storedShoppingItems = JSON.parse(localStorage.getItem("shoppingItems"));
@@ -66,7 +70,7 @@ function createElement(item) {
     <h3 class="card-name">${item.name}</h3>
     <p class="price-tag">Price:<span class="price">${item.price}</span></p>
     </a>
-    <button class="remove-button"><i class="fa fa-trash-o"></i> Remove Item</button>
+    <button class="remove-button"><i class="fa fa-trash"></i> Remove Item </button>
     </div>
   `;
   shoppingList.appendChild(itemElement); //appending the created element to the DOM
@@ -76,8 +80,8 @@ function createElement(item) {
 function RemoveItems(element) {
   const removeButton = element.querySelector(".remove-button");
   removeButton.addEventListener("click", () => {
-    const index = shoppingItems.indexOf(element); //getting the index of the selected element
-    shoppingItems.splice(index, 1); //removing the element from the array
+    const itemIndex = Array.from(shoppingList.children).indexOf(element); //converting the HTMLCollection returned by shoppingList.children into an array and getting the index of the selected element
+    shoppingItems.splice(itemIndex, 1); //removing the element from the array
     element.remove(); // Remove the item from the shopping list
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
     updateCartCount();
@@ -107,8 +111,8 @@ function CheckOutItems() {
     }
     const totalPrice = shoppingItems.reduce((price, item) => price + parseFloat(item.price), 0);
     alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
-    shoppingItems.length = 0;
     shoppingList.innerHTML = ""
+    shoppingItems.length = 0;
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
     shoppingList.style.display = "none";
     updateCartCount();
@@ -148,8 +152,8 @@ closeBtn.addEventListener("click", () => {
 //filter/sort form
 let originalProducts;
 
-const form1 = document.querySelector("#filter-form");
-form1.addEventListener("submit", (e) => {
+const fliterForm = document.querySelector("#filter-form");
+fliterForm.addEventListener("submit", (e) => {
   e.preventDefault();
   filterAndSortProducts();
 });
@@ -157,10 +161,8 @@ function filterAndSortProducts() {
   // Get the selected category and sorting options
   const category = document.querySelector("#category").value;
   const sort = document.querySelector("#sort").value;
-  originalProducts === undefined
-    ? (originalProducts = Array.from(products))
-    : (products = Array.from(originalProducts));
-  products = Array.from(originalProducts);
+  if (originalProducts === undefined) originalProducts = Array.from(products)
+  else products = Array.from(originalProducts)
   // Filter the products based on the selected category
   let filteredProducts = products;
   if (category !== "all") {
@@ -179,20 +181,19 @@ function filterAndSortProducts() {
   });
   displayProducts(filteredProducts); // display the filtered and sorted products
 }
-
+//searching products
 const searchInput = document.querySelector("#search-input");
 searchInput.addEventListener("keyup", handleSearch);
 function handleSearch(e) {
   const searchQuery = searchInput.value.toLowerCase();
-  const filteredProducts = Array.from(products).filter((product) => {
+  const searchedProducts = Array.from(products).filter((product) => {
     return product
       .querySelector(".card-name")
       .textContent.toLowerCase()
       .includes(searchQuery);
   });
-  //enter keycode
   if (e.key === "Enter" || e.key === "Backspace") {
-    displayProducts(filteredProducts);
+    displayProducts(searchedProducts);
   }
 }
 function displayProducts(products) {
@@ -232,24 +233,19 @@ emailForm.addEventListener(
   "submit",
   (e) => {
     e.preventDefault();
-    if (emailInput.value === "") alert("Enter a valid email adress");
+    if (emailInput.value === "") return alert("Enter a valid email adress");
     else alert("Congratulations! You have subscribed to our newsletter");
     emailForm.reset();
   },
-  {
-    once: true,
-  }
+
 );
 //easter egg section
 const easterEggForm = document.querySelector('.easter-egg-form');
 easterEggForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  checkValue()
-})
-function checkValue() {
   const inputValue = document.getElementById("inputValue").value;
   inputValue === "dino" ? window.location.href = "https://googledino28.netlify.app" : alert("Wrong input value")
-}
+})
 const hints = ["For the second letter maybe you should check the feature section more carefully",
   "For the third letter maybe you should check the bottom of the site",
   "For the final letter maybe you should check the DevTools console.If you are on mobile,this hint won't work but we are sure you can guess the word"];

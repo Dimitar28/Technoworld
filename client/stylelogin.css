@@ -16,6 +16,12 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
+.recommendations{
+  max-width: 40ch;
+  text-align: center;
+  font-size: clamp(.9rem,1.2vw,1.5rem);
+  opacity: .7;
+}
 .container {
   position: relative;
   width: 100%;

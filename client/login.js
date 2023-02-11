@@ -6,7 +6,6 @@ const passwordInputs = document.querySelectorAll("input[type=password]")
 const viewPassButtons = document.querySelectorAll(".view-pass");
 const container = document.querySelector(".container");
 const user = JSON.parse(localStorage.getItem("user"))
-
 //Sign up form
 signUpForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -15,15 +14,20 @@ signUpForm.addEventListener("submit", e => {
   createUser(signUpUserName, signUpPassword)
 })
 function createUser(userName, password) {
-  //Hash password before saving to local storage
+  const hasCapital = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
   const signUpUser = {
     signUpUserName: userName,
     signUpPassword: password
   }
   if (userName === '' || password === '') return alert("Enter your information");
+  if (password.length < 6) return alert("Password must contain at least 6 charachters")
+  if (!hasCapital) return alert("Password must contain capitalized letters")
+  if (!hasNumber) return alert("Password must contain numbers")
   localStorage.setItem("user", JSON.stringify(signUpUser))
   window.location.href = "login.html"
 }
+
 sign_up_btn.addEventListener("click", () => {
   container.classList.add("sign-up-mode");
 });
