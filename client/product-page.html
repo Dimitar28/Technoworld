@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title id="product-name" ></title>
+      <link rel="icon" href="./assets/comp-favicon.ico"/>
     <link rel="stylesheet" href="styleproductpage.css">
 </head>
 <body>
@@ -22,18 +23,6 @@
     </section>
   </main>
 <script>
-    validateQueryString(location.search);
-
-    const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get("id");
-const productName = urlParams.get("name");
-const productImage = urlParams.get("image");
-const productDescription = urlParams.get("description");
-const productPrice = urlParams.get("price");
-
-document.querySelector("#product-image").innerHTML = `<img src="${productImage}" alt="${productName}">`;
-document.querySelector("#product-name").innerHTML = productName;
-document.querySelector("#product-price").innerHTML = `Price: $${productPrice}`;
 function validateQueryString(query) {
   const validTypes = ['string', 'number'];
   const queryParams = new URLSearchParams(query);
@@ -46,6 +35,27 @@ function validateQueryString(query) {
 
   return true;
 }
+
+//query string
+const urlParams = new URLSearchParams(window.location.search);
+
+try {
+  validateQueryString(window.location.search);
+  const productName = urlParams.get("name");
+  const productImage = urlParams.get("image");
+  const productPrice = urlParams.get("price");
+
+  const image = document.querySelector("#product-image");
+  const names =  document.querySelectorAll("#product-name");
+  const price = document.querySelector("#product-price");
+  image.innerHTML = `<img src="${productImage}" alt="${productName}">`;
+   names.forEach(name => name.innerHTML = productName)
+  price.innerHTML = `Price: $${productPrice}`;
+} catch (error) {
+  console.error(error);
+  window.location.href = '/';
+}
+
 
 </script>
 </body>
