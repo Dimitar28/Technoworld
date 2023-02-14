@@ -111,8 +111,8 @@ function CheckOutItems() {
     }
     const totalPrice = shoppingItems.reduce((price, item) => price + parseFloat(item.price), 0);
     alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
-    shoppingList.innerHTML = ""
     shoppingItems.length = 0;
+    shoppingList.innerHTML = ""
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
     shoppingList.style.display = "none";
     updateCartCount();
@@ -183,8 +183,8 @@ function filterAndSortProducts() {
 }
 //searching products
 const searchInput = document.querySelector("#search-input");
-searchInput.addEventListener("keyup", handleSearch);
-function handleSearch(e) {
+searchInput.addEventListener("input", handleSearch);
+function handleSearch() {
   const searchQuery = searchInput.value.toLowerCase();
   const searchedProducts = Array.from(products).filter((product) => {
     return product
@@ -192,9 +192,7 @@ function handleSearch(e) {
       .textContent.toLowerCase()
       .includes(searchQuery);
   });
-  if (e.key === "Enter" || e.key === "Backspace") {
-    displayProducts(searchedProducts);
-  }
+  displayProducts(searchedProducts);
 }
 function displayProducts(products) {
   productContainer.innerHTML = "";
@@ -202,6 +200,7 @@ function displayProducts(products) {
     productContainer.appendChild(product);
   });
 }
+
 //animating the products
 const observer = new IntersectionObserver(
   (entries) => {
@@ -285,3 +284,26 @@ ctaButton1.addEventListener("click", () => {
 //getting the current year for the copyright text
 const year = document.querySelector("#year");
 year.textContent = new Date().getFullYear();
+
+//cursor animation
+const trail = document.querySelector(".trail")
+function animateTrail(e, interacting) {
+  const x = e.clientX - trail.offsetWidth / 2;
+  const y = e.clientY - trail.offsetHeight / 2
+  const keyframes = {
+    transform: trail.style.transform = `translate(${x}px, ${y}px) scale(${interacting ? 2.5 : 1})`
+  }
+  trail.animate(keyframes, {
+    duration: 800,
+    fill: "forwards"
+  })
+  trail.style.opacity = 1;
+  setTimeout(() => {
+    trail.style.opacity = 0;
+  }, 1600);
+}
+document.addEventListener("mousemove", (e) => {
+  const interactableCard = e.target.closest(".card");
+  interacting = interactableCard !== null;
+  animateTrail(e, interacting)
+})

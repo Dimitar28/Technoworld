@@ -4,20 +4,23 @@
   top: 0;
   z-index: 1;
 }
+
 .nav-list {
   gap: clamp(0.7rem, 3vw, 4rem);
   list-style: none;
   padding: 0.6rem;
-  font-size: clamp(0.87rem, 1.6vw, 2rem);
+  font-size: clamp(0.9rem, 1.6vw, 2rem);
   background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
 }
+
 .nav-item {
   position: relative;
   cursor: pointer;
   outline: 0;
   color: var(--primary-clr-100);
 }
+
 .nav-item::after {
   content: "";
   position: absolute;
@@ -29,13 +32,16 @@
   transition: transform 0.3s ease-in-out;
   transform-origin: right;
 }
+
 .nav-item:where(:hover, :focus-visible)::after {
   transform: scaleX(1);
   transform-origin: left;
 }
+
 .dropdown {
   position: relative;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -44,19 +50,23 @@
   animation: fade-in 0.5s forwards;
   z-index: 3;
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 .nav-button {
   border: 0;
   background-color: transparent;
- font-size: clamp(0.9rem, 1.6vw, 2rem);
+  font-size: clamp(0.9rem, 1.6vw, 2rem);
 }
+
 .dropdown-content a {
   display: block;
   cursor: pointer;
@@ -64,12 +74,15 @@
   padding: 0.5rem;
   transition: 0.5s;
 }
+
 .dropdown-content a:hover {
   background-color: var(--secondary-clr-400);
 }
+
 .dropdown:focus-within .dropdown-content {
   display: block;
 }
+
 .cart-count {
   position: absolute;
   font-size: clamp(0.9rem, 1.5vw, 1.2rem);
@@ -79,6 +92,7 @@
   margin-top: -0.5rem;
   padding-inline: 0.2rem;
 }
+
 /*progress bar */
 .scroll-tracker {
   height: 0.3rem;
@@ -87,24 +101,32 @@
   border-radius: 100vw;
   width: 0%;
 }
+
 .nav-search-input,
-.newsletter-input {
+.newsletter-input,
+#inputValue {
   border: none;
   border-bottom: 2px solid #333;
   caret-color: var(--secondary-clr-400);
   padding: 0.5rem 0.5rem 0.2rem;
   font-size: 1rem;
 }
+
+.nav-search-input::-webkit-search-cancel-button {
+  position: relative;
+  cursor: pointer;
+}
+
 .toggle-search {
   display: none;
   cursor: pointer;
-  margin-left: -0.5rem;
   border: 0;
   font-size: 1.05rem;
   outline: var(--outline);
   background-color: transparent;
   color: var(--primary-clr-100);
 }
+
 /*back to top button */
 .back-to-top {
   position: fixed;
@@ -112,20 +134,24 @@
   z-index: 2;
   transition: 0.5s;
 }
+
 .active {
   inset: auto 0.5rem 0.5rem auto;
 }
+
 @media (width < 800px) {
   .toggle-search {
     display: block;
   }
+
   .nav-search-input {
     position: absolute;
     visibility: hidden;
-    width: 96%;
-    top: 3.3rem;
+    width: 95%;
+    top: 3rem;
     left: 0;
   }
+
   .visible {
     visibility: visible;
   }

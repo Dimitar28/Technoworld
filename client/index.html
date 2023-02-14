@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Technoworld | Startup page</title>
-     <link rel="icon"  href="./assets/comp-favicon.ico" />
+    <link rel="icon" href="./assets/comp-favicon.ico" />
     <link rel="stylesheet" href="stylenavbar.css" />
     <link rel="stylesheet" href="stylemaincontent.css" />
+    <link rel="stylesheet" href="styleproducts.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
@@ -15,22 +16,24 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-           <!-- Loader -->
+    <!-- Loader -->
     <div class="loading">
-  <div class="loading-spinner"></div>
-   </div>
-
+      <div class="loading-spinner"></div>
+    </div>
+    <!-- Navigation -->
     <header class="navbar">
       <nav>
         <ul class="nav-list flex">
           <li>
-            <a href="index.html" class="nav-item"
+            <a href="#" class="nav-item" onclick=" backToMainPage()"
               ><i class="fa fa-house"></i> Home</a
             >
           </li>
           <li class="dropdown">
             <button class="nav-item nav-button">
-              <i class="fa fa-desktop"></i> Pro<span class="special-letter">d</span>ucts
+              <i class="fa fa-desktop"></i> Pro<span class="special-letter"
+                >d</span
+              >ucts
             </button>
             <div class="dropdown-content">
               <a href="#" class="nav-item text-center">Computers</a>
@@ -40,7 +43,7 @@
           </li>
           <li>
             <input
-              type="text"
+              type="search"
               id="search-input"
               class="nav-search-input"
               placeholder="Search products..."
@@ -53,13 +56,15 @@
             >
           </li>
           <li class="cart">
-            <a href="#shopping-page" class="nav-item cart-button"
+            <a href="#" class="nav-item cart-button"
               ><i class="fa fa-cart-shopping"></i> Cart
               <span class="cart-count">0</span>
             </a>
           </li>
         </ul>
       </nav>
+      <div class="trail"></div>
+
       <div class="scroll-tracker"></div>
     </header>
     <a href="#"> <i class="fa fa-arrow-circle-up fa-3x | back-to-top"></i></a>
@@ -69,7 +74,9 @@
           We have just implemented a brand new chatbot! More information below.
         </h2>
         <button class="close-btn">Close</button>
-      <button class="glow-on-hover | cta" type="button"><a href="#chatbot" class="cta-link">Go to announcement!</a></button>
+        <button class="glow-on-hover | cta" type="button">
+          <a href="#chatbot" class="cta-link">Go to announcement!</a>
+        </button>
       </div>
       <form id="filter-form" class="filter-form flex text-center">
         <label for="category">Filter by category:</label>
@@ -78,7 +85,7 @@
           <option value="laptop">Laptop</option>
           <option value="computer">Desktop</option>
           <option value="monitor">Monitor</option>
-            <option value="keyboard/mouse">keyboard/Mouse</option>
+          <option value="keyboard/mouse">keyboard/Mouse</option>
           <option value="acessories">Other acessories</option>
         </select>
         <label for="sort">Sort by Price:</label>
@@ -87,14 +94,23 @@
           <option value="price-asc">Low to high</option>
           <option value="price-desc">High to low</option>
         </select>
-        <button type="submit">Apply</button>
+        <button type="submit" class="apply">Apply</button>
       </form>
-       <!--Products -->
+      <!--Products -->
       <h2 class="feat text-center m-block">Featured items</h2>
       <section class="featured-components">
-        <div class="card text-center" data-price="1399" data-category="laptop" style="--order:1">
-          <a href="product-page.html?&name=Gaming laptop HP VICTUS 16 16.1 AMD RYZEN-7 5800H RAM 16 GB SSD 512GB NVIDIA GEFORCE RTX3060 6GB GDDR6 WINDOWS-11 PERFORMANCE BLUE &image=img/hp-victus16.jpg &price=1509" class="card-link">
-            <img loading="lazy"
+        <div
+          class="card text-center"
+          data-price="1399"
+          data-category="laptop"
+          style="--order: 1"
+        >
+          <a
+            href="product-page.html?&name=Gaming laptop HP VICTUS 16 16.1 AMD RYZEN-7 5800H RAM 16 GB SSD 512GB NVIDIA GEFORCE RTX3060 6GB GDDR6 WINDOWS-11 PERFORMANCE BLUE &image=img/hp-victus16.jpg &price=1509"
+            class="card-link"
+          >
+            <img
+              loading="lazy"
               src="img/hp-victus16.jpg"
               alt="Computer 1"
               class="card-image skeleton"
@@ -110,9 +126,22 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="799" data-category="laptop" style="--order:2">
-          <a href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Asus2.jpg &price=1599" class="card-link">
-            <img loading="lazy" src="img/Asus2.jpg" alt="Computer 2" class="card-image" />
+        <div
+          class="card text-center"
+          data-price="799"
+          data-category="laptop"
+          style="--order: 2"
+        >
+          <a
+            href="product-page.html?&name= Ultrabook-Asus-Zenbook-Flip-OLED-14.0-INTEL-CORE-i7-1165G7-RAM-16-GB-SSD-1000-GB-INTEL-IRIS-XE-GRAPHICS-WINDOWS-11-PRO-GREY &image=img/Asus2.jpg &price=1599"
+            class="card-link"
+          >
+            <img
+              loading="lazy"
+              src="img/Asus2.jpg"
+              alt="Computer 2"
+              class="card-image"
+            />
             <h3 class="card-name">
               Ultrabook ASUS Zenbook Flip OLED 14.0 INTEL CORE i7-1165G7, RAM 16
               GB, SSD 1000 GB, INTEL IRIS XE GRAPHICS, WINDOWS 11 PRO, Grey
@@ -123,11 +152,21 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center" data-price="999" data-category="computer" style="--order:3">
+        <div
+          class="card text-center"
+          data-price="999"
+          data-category="computer"
+          style="--order: 3"
+        >
           <a href="index.html" class="card-link">
-            <img loading="lazy" src="img/Gplay-Fighter XT.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/Gplay-Fighter XT.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
-             gaming computer GPLAY Fighter XT Red INTEL CORE I5-11400F, FIGHTER
+              gaming computer GPLAY Fighter XT Red INTEL CORE I5-11400F, FIGHTER
               RADEON RX 6600XT, 8+8 GB, 3200 MHz
             </h3>
             <p class="price-tag">Price:<span class="price">999$</span></p>
@@ -136,12 +175,19 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"
+        <div
+          class="card text-center"
           data-price="1299"
-          data-category="computer" style="--order:4"
+          data-category="computer"
+          style="--order: 4"
         >
-      <a href="index.html" class="card-link">
-            <img loading="lazy" src="img/Acer-pred.jpg" alt="Computer 3" class="card-image" />
+          <a href="index.html" class="card-link">
+            <img
+              loading="lazy"
+              src="img/Acer-pred.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
               gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
               GeForce RTX 3070, 8+8 GB, 3200 MHz
@@ -152,12 +198,19 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"
+        <div
+          class="card text-center"
           data-price="899"
-          data-category="computer" style="--order:5"
+          data-category="computer"
+          style="--order: 5"
         >
-        <a href="index.html" class="card-link">
-            <img loading="lazy" src="img/Acer-nitro.jpg" alt="Computer 3" class="card-image" />
+          <a href="index.html" class="card-link">
+            <img
+              loading="lazy"
+              src="img/Acer-nitro.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
               gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
               GeForce RTX 3060 Ti, 16 GB, 3200 MHz
@@ -168,28 +221,39 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"
+        <div
+          class="card text-center"
           data-price="69"
-          data-category="keyboard/mouse"  style="--order:1"
+          data-category="keyboard/mouse"
+          style="--order: 1"
         >
           <a href="index.html" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/razer viper.jpg"
               alt="Computer 1"
               class="card-image"
             />
-            <h3 class="card-name">
-             Мишка RAZER Viper 16 000 dpi optic
-            </h3>
+            <h3 class="card-name">Мишка RAZER Viper 16 000 dpi optic</h3>
             <p class="price-tag">Price:<span class="price">69$</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:2" data-price="499" data-category="monitor">
+        <div
+          class="card text-center"
+          style="--order: 2"
+          data-price="499"
+          data-category="monitor"
+        >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/Dell.jpg" alt="Computer 2" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/Dell.jpg"
+              alt="Computer 2"
+              class="card-image"
+            />
             <h3 class="card-name">
               Monitor DELL AW3420DW-14 0.232 mm 178°/178°, IPS, 34.1 86.6 cm
               3440x1440 120 Hz 2.0 ms HDMI DisplayPort WHITE
@@ -200,15 +264,21 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:3" data-price="349" data-category="monitor">
+        <div
+          class="card text-center"
+          style="--order: 3"
+          data-price="349"
+          data-category="monitor"
+        >
           <a href="" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/Samsung.jpg"
               alt="Computer 3"
               class="card-image"
             />
             <h3 class="card-name">
-             Monitor SAMSUNG LS28AG700NUXEN 144Hz 0.162 mm 178°/178°, IPS, 28.0
+              Monitor SAMSUNG LS28AG700NUXEN 144Hz 0.162 mm 178°/178°, IPS, 28.0
               71.1 cm 3840x2160 4K 144 Hz 1.0 ms HDMI, DisplayPort BLACK
             </h3>
             <p class="price-tag">Price:<span class="price">349$</span></p>
@@ -217,32 +287,39 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:4"
+        <div
+          class="card text-center"
+          style="--order: 4"
           data-price="39"
           data-category="acessories"
         >
           <a href="" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/tracer.jpg"
               alt="Computer 3"
               class="card-image"
             />
-            <h3 class="card-name">
-              Клавиатура TRACER HITT/ MECHANICAL BLACK
-
-            </h3>
+            <h3 class="card-name">Клавиатура TRACER HITT/ MECHANICAL BLACK</h3>
             <p class="price-tag">Price:<span class="price">39$</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:5"
+        <div
+          class="card text-center"
+          style="--order: 5"
           data-price="299"
           data-category="acessories"
         >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/i9.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/i9.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">Processor INTEL Core i9-10900 COMET LAKE</h3>
             <p class="price-tag">Price:<span class="price">299$</span></p>
           </a>
@@ -250,9 +327,15 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:1" data-price="3999" data-category="laptop">
+        <div
+          class="card text-center"
+          style="--order: 1"
+          data-price="3999"
+          data-category="laptop"
+        >
           <a href="index.html" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/Asus-ROG-Zephyrus.jpg"
               alt="Computer 1"
               class="card-image"
@@ -268,9 +351,19 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:2" data-price="1299" data-category="laptop">
+        <div
+          class="card text-center"
+          style="--order: 2"
+          data-price="1299"
+          data-category="laptop"
+        >
           <a href="#" class="card-link">
-            <img loading="lazy" src="img/HP-Spectre.jpg" alt="Computer 2" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/HP-Spectre.jpg"
+              alt="Computer 2"
+              class="card-image"
+            />
             <h3 class="card-name">
               Лаптоп 2 в 1 HP SPECTRE X360 14-EA1003NU/597T8 13.5 INTEL CORE
               i7-1195G7 RAM 16 GB SSD 1000 GB INTEL IRIS XE GRAPHICS WINDOWS 11
@@ -282,64 +375,89 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:3"
+        <div
+          class="card text-center"
+          style="--order: 3"
           data-price="89"
           data-category="acessories"
         >
           <a href="#" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/Asus-TUF-Case.jpg"
               alt="Computer 3"
               class="card-image"
             />
-            <h3 class="card-name">
-              Computer case ASUS TUF GAMING GT301 АRGB
-            </h3>
-            <p class="price-tag">Pr<span class="special-letter">i</span>ce:<span class="price">89$</span></p>
+            <h3 class="card-name">Computer case ASUS TUF GAMING GT301 АRGB</h3>
+            <p class="price-tag">
+              Pr<span class="special-letter">i</span>ce:<span class="price"
+                >89$</span
+              >
+            </p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:4"
+        <div
+          class="card text-center"
+          style="--order: 4"
           data-price="209"
           data-category="acessories"
         >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/Слушалки JBL QUANTUM ONE BLK.jpg" alt="Computer 3" class="card-image" />
-            <h3 class="card-name">
-              HEADSET JBL QUANTUM ONE BLK
-            </h3>
+            <img
+              loading="lazy"
+              src="img/Слушалки JBL QUANTUM ONE BLK.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
+            <h3 class="card-name">HEADSET JBL QUANTUM ONE BLK</h3>
             <p class="price-tag">Price:<span class="price">209$</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:5"
+        <div
+          class="card text-center"
+          style="--order: 5"
           data-price="1569"
           data-category="acessories"
         >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/rtx4090.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/rtx4090.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
-            PNY GEFORCE RTX 4090 24GB XLR8 Gaming VERTO Edition 
-          </h3>
+              PNY GEFORCE RTX 4090 24GB XLR8 Gaming VERTO Edition
+            </h3>
             <p class="price-tag">Price:<span class="price">1669$</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:1" data-price="2899" data-category="laptop">
+        <div
+          class="card text-center"
+          style="--order: 1"
+          data-price="2899"
+          data-category="laptop"
+        >
           <a href="index.html" class="card-link">
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src="img/macBook Pro.jpg"
               alt="Computer 1"
               class="card-image"
             />
             <h3 class="card-name">
-            Laptop APPLE MacBook Pro 16" M1 MAX Z14X0000W 64/1 SG 16.2 ", APPLE M1 MAX, RAM 64 GB, SSD 1000 GB, APPLE 32 CORE GPU, MAC OS, SPACE GRAY
+              Laptop APPLE MacBook Pro 16" M1 MAX Z14X0000W 64/1 SG 16.2 ",
+              APPLE M1 MAX, RAM 64 GB, SSD 1000 GB, APPLE 32 CORE GPU, MAC OS,
+              SPACE GRAY
             </h3>
             <p class="price-tag">Price:<span class="price">2899$</span></p>
           </a>
@@ -347,11 +465,21 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:2" data-price="99" data-category="keyboard/mouse">
+        <div
+          class="card text-center"
+          style="--order: 2"
+          data-price="99"
+          data-category="keyboard/mouse"
+        >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/Logitech G815.jpg" alt="Computer 2" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/Logitech G815.jpg"
+              alt="Computer 2"
+              class="card-image"
+            />
             <h3 class="card-name">
-            Клавиатура LOGITECH G915 TKL BK LINEAR 920-009520
+              Клавиатура LOGITECH G915 TKL BK LINEAR 920-009520
             </h3>
             <p class="price-tag">Price:<span class="price">99$</span></p>
           </a>
@@ -359,11 +487,23 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:3" data-price="169" data-category="monitor">
+        <div
+          class="card text-center"
+          style="--order: 3"
+          data-price="169"
+          data-category="monitor"
+        >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/acer monitor.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/acer monitor.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
-             Монитор ACER Predator XB253QGPbmiiprzx UM.KX3EE.P08 0.283 мм, 178°/178°, IPS, 24.5 ", 62.2 см, 1920x1080, 144 Hz, HDMI, DisplayPort, ЧЕРЕН
+              Монитор ACER Predator XB253QGPbmiiprzx UM.KX3EE.P08 0.283 мм,
+              178°/178°, IPS, 24.5 ", 62.2 см, 1920x1080, 144 Hz, HDMI,
+              DisplayPort, ЧЕРЕН
             </h3>
             <p class="price-tag">Price:<span class="price">169$</span></p>
           </a>
@@ -371,14 +511,22 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:4"
+        <div
+          class="card text-center"
+          style="--order: 4"
           data-price="129"
           data-category="keyboard/mouse"
         >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/keyboard-mouse bundle.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/keyboard-mouse bundle.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
-             Spartan Gear Hydra 2 Gaming complect-keyboard,mouse, headphones and mousepad
+              Spartan Gear Hydra 2 Gaming complect-keyboard,mouse, headphones
+              and mousepad
             </h3>
             <p class="price-tag">Price:<span class="price">129$</span></p>
           </a>
@@ -386,14 +534,23 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-        <div class="card text-center"  style="--order:5"
+        <div
+          class="card text-center"
+          style="--order: 5"
           data-price="4199"
           data-category="computer"
         >
           <a href="" class="card-link">
-            <img loading="lazy" src="img/asus rog strix.jpg" alt="Computer 3" class="card-image" />
+            <img
+              loading="lazy"
+              src="img/asus rog strix.jpg"
+              alt="Computer 3"
+              class="card-image"
+            />
             <h3 class="card-name">
-              Gaming computer ASUS ROG Strix G35CG-WB9931W with water cooling on the processor INTEL CORE I9-11900KF, NVIDIA GEFORCE RTX 3090, 16+16 GB, 3200 MHz
+              Gaming computer ASUS ROG Strix G35CG-WB9931W with water cooling on
+              the processor INTEL CORE I9-11900KF, NVIDIA GEFORCE RTX 3090,
+              16+16 GB, 3200 MHz
             </h3>
             <p class="price-tag">Price:<span class="price">4199$</span></p>
           </a>
@@ -401,12 +558,11 @@
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
         </div>
-
       </section>
       <!-- Newsletter -->
       <section>
         <form class="email-form flex">
-          <h2 class="subscribe  text-center">Subscribe to our newsletter</h2>
+          <h2 class="subscribe text-center">Subscribe to our newsletter</h2>
           <input
             type="email"
             class="newsletter-input"
@@ -417,57 +573,72 @@
       </section>
     </main>
     <!-- shopping page -->
-    <div class="shopping-page text-center" id="shopping-page">
-      <h2 class="feat m-block">Shopping Cart Preview</h2>
-
+    <section class="shopping-page text-center" id="shopping-page">
+      <h2 class="feat shop-preview m-block">Shopping Cart Preview</h2>
       <div class="shopping-list"></div>
       <div class="shopping-buttons">
         <button class="checkout-button">Checkout</button>
         <button class="back-button">Back</button>
       </div>
-    </div>
-     <!-- easter egg section  -->
+    </section>
+    <!-- Easter egg section  -->
     <section class="easter-egg-section flex">
       <div class="easter-egg-info">
         <h2 class="text-center">Easter egg section</h2>
-        <p>Welcome to our easter egg section.Here you can enter a specific 4-letter word and experience our minigame easter egg.
-           Don't know the word? Don't worry! The letters for the word are scattered throughout the webstite and marked by an underline.If you want, 
-           you can click the hint button.The first 500 people that enter the correct word will receive a 20% discount coupon. 
-           Also the top 3 with the highest score by the end of the month will receive a free HP Victus 16 laptop. Good luck!
+        <p>
+          Welcome to our easter egg section.Here you can enter a specific
+          4-letter word and experience our minigame easter egg. Don't know the
+          word? Don't worry! The letters for the word are scattered throughout
+          the webstite and marked by an underline.If you want, you can click the
+          hint button.The first 500 people that enter the correct word will
+          receive a 20% discount coupon. Also the top 3 with the highest score
+          by the end of the month will receive a free HP Victus 16 laptop. Good
+          luck!
         </p>
       </div>
       <form class="easter-egg-form flex">
         <label>Enter a value:</label>
-        <input type="text"  autocomplete="off" id="inputValue">
+        <input
+          type="text"
+          autocomplete="off"
+          id="inputValue"
+          placeholder="Enter the correct word..."
+        />
         <button type="submit" class="newsletter-btn">Submit</button>
       </form>
       <button type="button" id="hintButton">Hint</button>
-    <div id="hintContainer"></div>
+      <div id="hintContainer"></div>
     </section>
     <!-- Chatbot -->
     <section class="chatbot text-center m-block" id="chatbot">
       <h2>Introducing our new chatbot-TechnoBot!</h2>
       <div class="container flex">
-        <img loading="lazy" src="./img/chatbot.png" alt="" class="bot-img">
+        <img loading="lazy" src="./img/chatbot.png" alt="" class="bot-img" />
         <p class="chatbot-descr">
           We are extremely happy to introduce you our new chatbot, designed to
           provide efficient customer service and assist with frequently asked
           questions. Using advanced natural language processing, our chatbot can
           provide information on products, services, and company policies and
-          even help with placing orders.Available
-          24/7, it allows customers to get the help they need at any time
-          without waiting for a customer service representative. We believe our
-          chatbot will enhance the customer experience and make it easier for
-          them to do business with us.
+          even help with placing orders.Available 24/7, it allows customers to
+          get the help they need at any time without waiting for a customer
+          service representative. We believe our chatbot will enhance the
+          customer experience and make it easier for them to do business with
+          us.
         </p>
       </div>
-      <button type="submit" class="cta-1"><a href="./chatbot-page/index.html" target="_blank" class="cta-link-1">Go talk to our  chatbot</a></button>
+      <button type="submit" class="cta-1">
+        <a href="./chatbot-page/index.html" target="_blank" class="cta-link-1"
+          >Go talk to our chatbot</a
+        >
+      </button>
     </section>
     <!-- footer -->
     <footer class="text-center">
       <p>
         Copyright &copy; <span id="year"></span>
-        <a href="index.html" class="nav-item">Tech<span class="special-letter">n</span>oworld</a>
+        <a href="index.html" class="nav-item"
+          >Tech<span class="special-letter">n</span>oworld</a
+        >
       </p>
     </footer>
   </body>

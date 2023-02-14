@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="product-name" ></title>
-      <link rel="icon" href="./assets/comp-favicon.ico"/>
-    <link rel="stylesheet" href="styleproductpage.css">
-</head>
-<body>
-  <main>
-    <section class="product-info text-center">
-      <div id="product-image"></div>
-      <div class="product-descr">
-        <h3 id="product-name"></h3>
-        <p>Безплатна доставка до пощенски код 1000</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="product-name"></title>
+    <link rel="icon" href="./assets/comp-favicon.ico" />
+    <link rel="stylesheet" href="styleproductpage.css" />
+  </head>
+  <body>
+    <main>
+      <section class="product-info text-center">
+        <div id="product-image"></div>
+        <div class="product-descr">
+          <h3 id="product-name"></h3>
+          <p>Безплатна доставка до пощенски код 1000</p>
           <p id="product-price"></p>
           <button class="add-to-cart">
-        <i class="fa fa-shopping-cart"></i> Add to Cart
-        </button>
-      </div>
-    </section>
-  </main>
-<script>
-function validateQueryString(query) {
-  const validTypes = ['string', 'number'];
-  const queryParams = new URLSearchParams(query);
+            <i class="fa fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </section>
+    </main>
+    <script>
+      function validateQueryString(query) {
+        const validTypes = ["string", "number"];
+        const queryParams = new URLSearchParams(query);
 
-  for (const [key, value] of queryParams) {
-    if (!validTypes.includes(typeof value)) {
-      throw new Error(`Invalid type for ${key}: ${typeof value}. Only ${validTypes.join(' and ')} are allowed.`);
-    }
-  }
+        for (const [key, value] of queryParams) {
+          if (!validTypes.includes(typeof value)) {
+            throw new Error(
+              `Invalid type for ${key}: ${typeof value}. Only ${validTypes.join(
+                " and "
+              )} are allowed.`
+            );
+          }
+        }
 
-  return true;
-}
+        return true;
+      }
 
-//query string
-const urlParams = new URLSearchParams(window.location.search);
+      //query string
+      const urlParams = new URLSearchParams(window.location.search);
 
-try {
-  validateQueryString(window.location.search);
-  const productName = urlParams.get("name");
-  const productImage = urlParams.get("image");
-  const productPrice = urlParams.get("price");
+      try {
+        validateQueryString(window.location.search);
+        const productName = urlParams.get("name");
+        const productImage = urlParams.get("image");
+        const productPrice = urlParams.get("price");
 
-  const image = document.querySelector("#product-image");
-  const names =  document.querySelectorAll("#product-name");
-  const price = document.querySelector("#product-price");
-  image.innerHTML = `<img src="${productImage}" alt="${productName}">`;
-   names.forEach(name => name.innerHTML = productName)
-  price.innerHTML = `Price: $${productPrice}`;
-} catch (error) {
-  console.error(error);
-  window.location.href = '/';
-}
-
-
-</script>
-</body>
+        const image = document.querySelector("#product-image");
+        const names = document.querySelectorAll("#product-name");
+        const price = document.querySelector("#product-price");
+        image.innerHTML = `<img src="${productImage}" alt="${productName}">`;
+        names.forEach((name) => (name.innerHTML = productName));
+        price.innerHTML = `Price: $${productPrice}`;
+      } catch (error) {
+        console.error(error);
+        window.location.href = "/";
+      }
+    </script>
+  </body>
 </html>
