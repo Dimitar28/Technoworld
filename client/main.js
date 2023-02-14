@@ -307,3 +307,6 @@ document.addEventListener("mousemove", (e) => {
   interacting = interactableCard !== null;
   animateTrail(e, interacting)
 })
+document.addEventListener('touchstart', () => {
+  trail.style.display = 'none';
+});

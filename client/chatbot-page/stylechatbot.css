@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
 :root {
   scroll-behavior: smooth;
   --primary-clr-100: hsl(0, 0%, 100%);
@@ -16,10 +17,12 @@
   --secondary-orange-clr: hsl(39, 92%, 52%);
   --secondary-black-clr: hsl(0, 0%, 2%);
 }
+
 ::selection {
   background-color: var(--secondary-clr-400);
   color: var(--primary-clr-100);
 }
+
 #app {
   overflow-x: hidden;
   height: 100dvh;
@@ -29,10 +32,11 @@
   align-items: center;
   justify-content: space-between;
 }
+
 /* hides scrollbar */
 
 .wrapper {
-  width: 100vw;
+  width: 105vw;
   padding: 15px;
 }
 
@@ -41,12 +45,12 @@
 }
 
 .chat {
-  width: clamp(20rem, 60%, 80vw);
+  width: clamp(22rem, 60%, 80vw);
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 10px;
+  gap: .5rem;
 }
 
 .profile {
@@ -74,19 +78,21 @@
 .message {
   flex: 1;
   color: var(--primary-clr-100);
-  font-size: 1.2rem;
   overflow-x: scroll;
   white-space: pre-wrap;
+  font-size: clamp(1.1rem, 1.4vw, 2rem);
 }
+
 .ai .message {
   color: var(--secondary-black-clr);
 }
+
 /* hides scrollbar */
 .message::-webkit-scrollbar {
   display: none;
 }
 
-.chat-form{
+.chat-form {
   margin-top: 1rem;
   display: flex;
   width: clamp(20rem, 60vw, 100%);
@@ -107,9 +113,11 @@ textarea {
   border: none;
   outline: none;
 }
+
 ::placeholder {
   color: var(--primary-clr-100);
 }
+
 button {
   outline: 0;
   border: 0;
