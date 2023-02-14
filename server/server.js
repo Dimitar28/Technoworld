@@ -38,7 +38,9 @@ app.post('/', async (req, res) => {
       frequency_penalty: 0.5, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
       presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     });
-
+    res.set({
+      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+    });
     res.status(200).send({
       bot: response.data.choices[0].text
     });
