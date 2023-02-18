@@ -114,7 +114,7 @@ async function CheckOutItems() {
       quantity: 1,
     }));
     // Create a checkout session on the server using Stripe API
-    const response = await fetch("http://localhost:5000/create-checkout-session", {
+    const response = await fetch("https://technoworld-atum.onrender.com/create-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
