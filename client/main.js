@@ -121,6 +121,8 @@ async function CheckOutItems() {
       },
       body: JSON.stringify({ lineItems }),
     });
+    const data = await response.json();
+
     //reseting the shopping cart items
     shoppingItems.length = 0;
     shoppingList.innerHTML = "";
@@ -129,14 +131,14 @@ async function CheckOutItems() {
     updateCartCount();
 
     // Redirect the user to the Stripe checkout page
-    const { sessionId } = await response.json();
-    const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY76r3roo17cx29lX8UpqNEKLwhxlnW8opiX8YQuU200BOseCMVi"); // Replace with your Stripe public key
-    await stripe.redirectToCheckout({ sessionId });
+    const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY76r3roo17cx29lX8UpqNEKLwhxlnW8opiX8YQuU200BOseCMVi");
+    await stripe.redirectToCheckout({ sessionId: data.sessionId });
 
   });
 }
 
-CheckOutItems()
+CheckOutItems();
+
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
   backToMainPage();
