@@ -14,12 +14,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
     <script src="main.js" defer></script>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <!-- Loader -->
     <div class="loading">
       <div class="loading-spinner"></div>
     </div>
+    <!-- Trail and scroll to top button -->
+    <div class="trail">
+    </div>
+    <a href="#"> <i class="fa fa-arrow-circle-up fa-3x | back-to-top"></i></a>
     <!-- Navigation -->
     <header class="navbar">
       <nav>
@@ -63,11 +68,8 @@
           </li>
         </ul>
       </nav>
-      <div class="trail"></div>
-
       <div class="scroll-tracker"></div>
     </header>
-    <a href="#"> <i class="fa fa-arrow-circle-up fa-3x | back-to-top"></i></a>
     <main>
       <div class="notification text-center">
         <h2>
@@ -96,6 +98,8 @@
         </select>
         <button type="submit" class="apply">Apply</button>
       </form>
+       <!--Product not found  -->
+      <h2 class="not-found text-center">Product not found</h2>
       <!--Products -->
       <h2 class="feat text-center m-block">Featured items</h2>
       <section class="featured-components">
@@ -115,12 +119,9 @@
               alt="Computer 1"
               class="card-image skeleton"
             />
-            <h3 class="card-name">
-              Gaming laptop HP VICTUS 16 16.1 AMD RYZEN 7 5800H, RAM 16 GB, SSD
-              512 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS 11,
-              PERFORMANCE BLUE
+            <h3 class="card-name">Gaming laptop HP VICTUS 16 16.1 AMD RYZEN 7 5800H, RAM 16 GB, SSD 512 GB, NVIDIA GEFORCE RTX3060, 6 GB GDDR6, WINDOWS 11,PERFORMANCE BLUE
             </h3>
-            <p class="price-tag">Price:<span class="price">1399$</span></p>
+            <p class="price-tag">Price:$<span class="price">1399</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -146,7 +147,7 @@
               Ultrabook ASUS Zenbook Flip OLED 14.0 INTEL CORE i7-1165G7, RAM 16
               GB, SSD 1000 GB, INTEL IRIS XE GRAPHICS, WINDOWS 11 PRO, Grey
             </h3>
-            <p class="price-tag">Price:<span class="price">799$</span></p>
+            <p class="price-tag">Price:$<span class="price">799</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -169,7 +170,7 @@
               gaming computer GPLAY Fighter XT Red INTEL CORE I5-11400F, FIGHTER
               RADEON RX 6600XT, 8+8 GB, 3200 MHz
             </h3>
-            <p class="price-tag">Price:<span class="price">999$</span></p>
+            <p class="price-tag">Price:$<span class="price">999</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -192,7 +193,7 @@
               gaming computer ACER PREDATOR PO3-630,INTEL CORE i5-11400F, NVIDIA
               GeForce RTX 3070, 8+8 GB, 3200 MHz
             </h3>
-            <p class="price-tag">Price:<span class="price">1299$</span></p>
+            <p class="price-tag">Price:$<span class="price">1299</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -215,7 +216,7 @@
               gaming computer ACER NITRO N50-620 INTEL CORE I5-11400F, NVIDIA
               GeForce RTX 3060 Ti, 16 GB, 3200 MHz
             </h3>
-            <p class="price-tag">Price:<span class="price">899$</span></p>
+            <p class="price-tag">Price:$<span class="price">899</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -235,7 +236,7 @@
               class="card-image"
             />
             <h3 class="card-name">Мишка RAZER Viper 16 000 dpi optic</h3>
-            <p class="price-tag">Price:<span class="price">69$</span></p>
+            <p class="price-tag">Price:$<span class="price">69</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -258,7 +259,7 @@
               Monitor DELL AW3420DW-14 0.232 mm 178°/178°, IPS, 34.1 86.6 cm
               3440x1440 120 Hz 2.0 ms HDMI DisplayPort WHITE
             </h3>
-            <p class="price-tag">Price:<span class="price">499$</span></p>
+            <p class="price-tag">Price:$<span class="price">499</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -281,7 +282,7 @@
               Monitor SAMSUNG LS28AG700NUXEN 144Hz 0.162 mm 178°/178°, IPS, 28.0
               71.1 cm 3840x2160 4K 144 Hz 1.0 ms HDMI, DisplayPort BLACK
             </h3>
-            <p class="price-tag">Price:<span class="price">349$</span></p>
+            <p class="price-tag">Price:$<span class="price">349</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -301,7 +302,7 @@
               class="card-image"
             />
             <h3 class="card-name">Клавиатура TRACER HITT/ MECHANICAL BLACK</h3>
-            <p class="price-tag">Price:<span class="price">39$</span></p>
+            <p class="price-tag">Price:$<span class="price">39</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -321,7 +322,7 @@
               class="card-image"
             />
             <h3 class="card-name">Processor INTEL Core i9-10900 COMET LAKE</h3>
-            <p class="price-tag">Price:<span class="price">299$</span></p>
+            <p class="price-tag">Price:$<span class="price">299</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -345,7 +346,7 @@
               RYZEN 9 6900HX RAM 32 GB SSD 2000 GB NVIDIA GEFORCE RTX3080Ti 16
               GB GDDR6 WINDOWS 11 PRO ЧЕРЕН
             </h3>
-            <p class="price-tag">Price:<span class="price">3999$</span></p>
+            <p class="price-tag">Price:$<span class="price">3999</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -369,7 +370,7 @@
               i7-1195G7 RAM 16 GB SSD 1000 GB INTEL IRIS XE GRAPHICS WINDOWS 11
               СРЕБРИСТ
             </h3>
-            <p class="price-tag">Price:<span class="price">1299$</span></p>
+            <p class="price-tag">Price:$<span class="price">1299</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -390,8 +391,8 @@
             />
             <h3 class="card-name">Computer case ASUS TUF GAMING GT301 АRGB</h3>
             <p class="price-tag">
-              Pr<span class="special-letter">i</span>ce:<span class="price"
-                >89$</span
+              Pr<span class="special-letter">i</span>ce:$<span class="price"
+                >89</span
               >
             </p>
           </a>
@@ -413,7 +414,7 @@
               class="card-image"
             />
             <h3 class="card-name">HEADSET JBL QUANTUM ONE BLK</h3>
-            <p class="price-tag">Price:<span class="price">209$</span></p>
+            <p class="price-tag">Price:$<span class="price">209</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -435,7 +436,7 @@
             <h3 class="card-name">
               PNY GEFORCE RTX 4090 24GB XLR8 Gaming VERTO Edition
             </h3>
-            <p class="price-tag">Price:<span class="price">1669$</span></p>
+            <p class="price-tag">Price:$<span class="price">1669</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -459,7 +460,7 @@
               APPLE M1 MAX, RAM 64 GB, SSD 1000 GB, APPLE 32 CORE GPU, MAC OS,
               SPACE GRAY
             </h3>
-            <p class="price-tag">Price:<span class="price">2899$</span></p>
+            <p class="price-tag">Price:$<span class="price">2899</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -481,7 +482,7 @@
             <h3 class="card-name">
               Клавиатура LOGITECH G915 TKL BK LINEAR 920-009520
             </h3>
-            <p class="price-tag">Price:<span class="price">99$</span></p>
+            <p class="price-tag">Price:$<span class="price">99</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -505,7 +506,7 @@
               178°/178°, IPS, 24.5 ", 62.2 см, 1920x1080, 144 Hz, HDMI,
               DisplayPort, ЧЕРЕН
             </h3>
-            <p class="price-tag">Price:<span class="price">169$</span></p>
+            <p class="price-tag">Price:$<span class="price">169</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -528,7 +529,7 @@
               Spartan Gear Hydra 2 Gaming complect-keyboard,mouse, headphones
               and mousepad
             </h3>
-            <p class="price-tag">Price:<span class="price">129$</span></p>
+            <p class="price-tag">Price:$<span class="price">129</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
@@ -552,7 +553,7 @@
               the processor INTEL CORE I9-11900KF, NVIDIA GEFORCE RTX 3090,
               16+16 GB, 3200 MHz
             </h3>
-            <p class="price-tag">Price:<span class="price">4199$</span></p>
+            <p class="price-tag">Price:$<span class="price">4199</span></p>
           </a>
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart

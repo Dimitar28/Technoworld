@@ -1,3 +1,10 @@
+.not-found {
+    display: none;
+    font-size: clamp(1.8rem, 2vw, 3rem);
+    font-weight: 300;
+    margin-block: 2rem;
+}
+
 /*Element cards */
 .featured-components {
     display: grid;
@@ -110,7 +117,7 @@
 
 .price-tag {
     font-size: 1.2em;
-    color: var(--secondary-clr-500);
+    color: var(--secondary-clr-300);
 }
 
 .add-to-cart,
@@ -123,7 +130,7 @@ button[type="submit"] {
     border: none;
     border-radius: 100vw;
     transition: 0.5s;
-    background-color: var(--secondary-clr-500);
+    background-color: var(--secondary-clr-300);
     color: var(--primary-clr-100);
 }
 

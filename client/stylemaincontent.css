@@ -9,9 +9,9 @@
   scroll-behavior: smooth;
   scroll-padding-top: 3rem;
   --primary-clr-100: hsl(0, 0%, 100%);
-  --secondary-clr-300: hsl(0, 60%, 30%);
+  --secondary-clr-300: hsl(358, 72%, 50%);
   --secondary-clr-400: hsl(0, 60%, 40%);
-  --secondary-clr-500: hsl(358, 72%, 50%);
+  --secondary-clr-500: hsl(0, 60%, 30%);
   --secondary-clr-900: hsl(0, 0%, 2%);
   --secondary-orange-clr: hsl(39, 92%, 52%);
   --outline: 1px solid var(--secondary-clr-400);
@@ -22,7 +22,7 @@
 }
 
 ::selection {
-  background-color: var(--secondary-clr-300);
+  background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
 }
 
@@ -61,7 +61,7 @@ a {
 img {
   user-select: none;
   max-width: 75%;
-  border: 1px solid var(--secondary-clr-500);
+  border: 1px solid var(--secondary-clr-400);
   border-radius: 50%;
   margin-top: 0.3rem;
 }
@@ -184,18 +184,20 @@ img {
 
 .close-btn {
   position: absolute;
-  inset: 0.5rem 0.5rem auto auto;
+  inset: 0.3rem 0.3rem auto auto;
   cursor: pointer;
   background-color: var(--secondary-clr-400);
   color: var(--primary-clr-100);
   font-size: clamp(1rem, 1.2vw, 1.4rem);
   transition: .3s;
+  padding-inline: .3rem;
   border: transparent;
 }
 
 .close-btn:where(:hover, :focus-visible) {
-  background-color: var(--secondary-clr-900);
+  background-color: var(--secondary-clr-500);
   color: var(--primary-clr-100);
+  outline: 2px solid var(--secondary-clr-900);
 }
 
 /*Filter/Sort form */
@@ -314,11 +316,10 @@ select {
 }
 
 footer {
-  background-color: var(--secondary-clr-500);
+  background-color: var(--secondary-clr-300);
   color: var(--primary-clr-100);
   font-weight: var(--fw-normal);
   padding: 1.5rem;
-  margin-bottom: 5rem;
 }
 
 /*Shooping section */
@@ -353,7 +354,7 @@ footer {
 
 .shopping-buttons button:hover,
 .checkout-button:hover {
-  background-color: var(--secondary-clr-500);
+  background-color: var(--secondary-clr-300);
 }
 
 @media (width < 800px) {
@@ -401,11 +402,12 @@ footer {
 .trail {
   position: fixed;
   width: 1rem;
-  aspect-ratio: 1;
+  aspect-ratio: 1/1;
   border-radius: 100vw;
   pointer-events: none;
   background-color: var(--secondary-orange-clr);
   opacity: 0;
   transition: opacity 1s ease;
+  z-index: 999;
   inset: 0;
 }

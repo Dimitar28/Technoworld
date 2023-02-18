@@ -14,11 +14,7 @@ window.addEventListener("DOMContentLoaded", function () {
 //managing login/logout status
 const loginLogoutLink = document.querySelector(".login-logout");
 loginLogoutLink.addEventListener("click", () => {
-  if (loginLogoutLink.innerHTML === '<i class="fa-regular fa-address-book"> </i> Log in') {
-    logIn(loginLogoutLink)
-  } else {
-    logOut(loginLogoutLink);
-  }
+  loginLogoutLink.innerHTML === '<i class="fa-regular fa-address-book"> </i> Log in' ? logIn(loginLogoutLink) : logOut(loginLogoutLink);
 })
 function logIn(link) {
   link.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log out';
@@ -68,7 +64,7 @@ function createElement(item) {
     <a href="index.html" class="card-link">
     <img src="${item.image}" class="card-image" alt="${item.name}">
     <h3 class="card-name">${item.name}</h3>
-    <p class="price-tag">Price:<span class="price">${item.price}</span></p>
+    <p class="price-tag">Price:$<span class="price">${item.price}</span></p>
     </a>
     <button class="remove-button"><i class="fa fa-trash"></i> Remove Item </button>
     </div>
@@ -98,24 +94,45 @@ function goToShoppingPage() {
   mainPage.style.display = "none";
   easterEggSection.style.display = "none";
 }
-function CheckOutItems() {
+async function CheckOutItems() {
   const checkoutButton = document.querySelector(".checkout-button");
-  checkoutButton.addEventListener("click", () => {
+  checkoutButton.addEventListener("click", async () => {
     if (shoppingItems.length === 0 || !user) {
-      if (shoppingItems.length === 0) {
-        alert("Your shopping cart is empty!");
-      } else {
-        alert("Log in with your account to purchase the selected items");
-      }
-      return;
+      shoppingItems.length === 0 ? alert("Your shopping cart is empty!") : alert("Log in with your account to purchase the selected items");
     }
-    const totalPrice = shoppingItems.reduce((price, item) => price + parseFloat(item.price), 0);
-    alert(`Thank you for your purchase! Your total is ${totalPrice}$`);
+
+    // Create an array of line items for the checkout session
+    const lineItems = shoppingItems.map(item => ({
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: item.name,
+          images: [item.image],
+        },
+        unit_amount: item.price * 100,
+      },
+      quantity: 1,
+    }));
+    // Create a checkout session on the server using Stripe API
+    const response = await fetch("http://localhost:5000/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ lineItems }),
+    });
+    //reseting the shopping cart items
     shoppingItems.length = 0;
-    shoppingList.innerHTML = ""
+    shoppingList.innerHTML = "";
     localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
     shoppingList.style.display = "none";
     updateCartCount();
+
+    // Redirect the user to the Stripe checkout page
+    const { sessionId } = await response.json();
+    const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY76r3roo17cx29lX8UpqNEKLwhxlnW8opiX8YQuU200BOseCMVi"); // Replace with your Stripe public key
+    await stripe.redirectToCheckout({ sessionId });
+
   });
 }
 
@@ -127,6 +144,7 @@ backButton.addEventListener("click", (e) => {
 function backToMainPage() {
   shoppingPage.style.display = "none";
   mainPage.style.display = "grid";
+  easterEggSection.style.display = "flex";
 }
 
 const dropdownLinks = document.querySelectorAll(".dropdown > button");
@@ -164,12 +182,8 @@ function filterAndSortProducts() {
   if (originalProducts === undefined) originalProducts = Array.from(products)
   else products = Array.from(originalProducts)
   // Filter the products based on the selected category
-  let filteredProducts = products;
-  if (category !== "all") {
-    filteredProducts = filteredProducts.filter(
-      (product) => product.dataset.category === category
-    );
-  }
+  let filteredProducts = Array.from(products)
+  if (category !== "all") filteredProducts = filteredProducts.filter((product) => product.dataset.category === category);
   // Sort the products based on the selected option
   filteredProducts.sort((a, b) => {
     switch (sort) {
@@ -193,6 +207,9 @@ function handleSearch() {
       .includes(searchQuery);
   });
   displayProducts(searchedProducts);
+  const textNotFound = document.querySelector(".not-found")
+  if (searchedProducts.length === 0) textNotFound.style.display = "block"
+  else textNotFound.style.display = "none"
 }
 function displayProducts(products) {
   productContainer.innerHTML = "";
@@ -252,11 +269,7 @@ const usedHints = [];
 const hintContainer = document.getElementById("hintContainer")
 const hintButton = document.getElementById("hintButton")
 hintButton.addEventListener("click", () => {
-  if (hints.length != 0) {
-    handleHints();
-  } else {
-    alert("No more hints available");
-  }
+  hints.length != 0 ? handleHints() : alert("No more hints available");
   function handleHints() {
     const index = Math.floor(Math.random() * hints.length);
     const hint = hints[index];
