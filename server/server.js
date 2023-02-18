@@ -26,8 +26,8 @@ app.post("/create-checkout-session", async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: "https://technowrld.netlify.app//sucess.html",
-    cancel_url: "https://technowrld.netlify.app//cancel.html"
+    success_url: "https://technowrld.netlify.app/",
+    cancel_url: "https://technowrld.netlify.app/cancel.html"
   });
   res.status(200).send({ sessionId: session.id });
 });
