@@ -1,9 +1,10 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
+dotenv.config()
 import cors from 'cors'
 import { Configuration, OpenAIApi } from 'openai'
-dotenv.config()
-
+import Stripe from 'stripe';
+const stripe = new Stripe("sk_test_51MWJzQBPlfaVkC5QXmGbp4b1b8P6J6CSWGQ0wjTUNhttL79XC8AMQpjEF8SK9Nearupumyspqt4KHDwVq55l3mEM00i7vhedJC");
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -13,13 +14,24 @@ const openai = new OpenAIApi(configuration);
 const app = express()
 app.use(cors())
 app.use(express.json())
-
 app.get('/', async (req, res) => {
   res.status(200).send({
     message: 'Hello World!'
   })
 })
+app.post("/create-checkout-session", async (req, res) => {
+  const { lineItems } = req.body;
 
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    line_items: lineItems,
+    mode: "payment",
+    success_url: process.env.CLIENT_URL,
+    cancel_url: `${process.env.CLIENT_URL}/cancel.html`
+  });
+
+  res.json({ sessionId: session.id });
+});
 app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
