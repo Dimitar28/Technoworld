@@ -4,7 +4,7 @@ dotenv.config()
 import cors from 'cors'
 import { Configuration, OpenAIApi } from 'openai'
 import Stripe from 'stripe';
-const stripe = new Stripe("sk_test_51MWJzQBPlfaVkC5QXmGbp4b1b8P6J6CSWGQ0wjTUNhttL79XC8AMQpjEF8SK9Nearupumyspqt4KHDwVq55l3mEM00i7vhedJC");
+const stripe = new Stripe(process.env.STRIPE_API_SECRET_KEY);
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -26,8 +26,8 @@ app.post("/create-checkout-session", async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: "https://technowrld.netlify.app/",
-    cancel_url: "https://technowrld.netlify.app/cancel.html"
+    success_url: `${process.env.CLIENT_URL}`,
+    cancel_url: `${process.env.CLIENT_URL}/cancel.html`,
   });
   res.status(200).send({ sessionId: session.id });
 });
