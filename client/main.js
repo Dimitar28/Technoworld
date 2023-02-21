@@ -134,10 +134,10 @@ async function CheckOutItems() {
   // Redirect the user to the Stripe checkout page
   const data = await response.json();
   await stripe.redirectToCheckout({ sessionId: data.sessionId });
-  window.addEventListener("popstate", () => {
-    loading.style.display = "none";
-  });
 }
+window.addEventListener("beforeunload", () => {
+  loading.style.display = "none";
+});
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
   backToMainPage();
