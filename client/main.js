@@ -98,12 +98,12 @@ function goToShoppingPage() {
 const checkoutButton = document.querySelector(".checkout-button");
 checkoutButton.addEventListener("click", CheckOutItems);
 async function CheckOutItems() {
-  loading.style.display = "grid"
   if (shoppingItems.length === 0 || !user) {
     shoppingItems.length === 0 ? alert("Your shopping cart is empty!") : alert("Log in with your account to purchase the selected items");
     return
   }
 
+  loading.style.display = "grid"
   // Create an array of line items for the checkout session
   const lineItems = shoppingItems.map(item => ({
     price_data: {
@@ -124,7 +124,6 @@ async function CheckOutItems() {
     },
     body: JSON.stringify({ lineItems }),
   });
-
   //reseting the shopping cart items
   shoppingItems.length = 0;
   shoppingList.innerHTML = "";
@@ -135,9 +134,9 @@ async function CheckOutItems() {
   // Redirect the user to the Stripe checkout page
   const data = await response.json();
   await stripe.redirectToCheckout({ sessionId: data.sessionId });
-  setTimeout(() => {
-    loading.style.display = "none"
-  }, 100);
+  window.addEventListener('focus', () => {
+    loading.style.display = 'none';
+  });
 }
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
