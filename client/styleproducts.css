@@ -14,7 +14,7 @@
 
 .feat {
     font-weight: var(--fw-normal);
-    font-size: 1.7rem;
+    font-size: clamp(1.3rem, 1.7vw, 2rem);
     font-family: "Source Code Pro", monospace;
     position: relative;
     width: max-content;
@@ -108,7 +108,7 @@
     overflow: hidden;
     word-wrap: break-word;
     text-overflow: ellipsis;
-    font-size: clamp(1rem, 1vw, 1.5rem);
+    font-size: clamp(.95rem, 1vw, 1.5rem);
     margin-inline: 0.4rem;
     font-weight: var(--fw-normal);
     margin-block: 0.5rem;
@@ -123,15 +123,16 @@
 .add-to-cart,
 .remove-button,
 button[type="submit"] {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
     margin-block: 0.5rem;
     cursor: pointer;
     border: none;
     border-radius: 100vw;
-    transition: 0.5s;
+    transition: .7s;
     background-color: var(--secondary-clr-300);
     color: var(--primary-clr-100);
+    border: 2px solid var(--secondary-clr-300);
 }
 
 .remove-button {
@@ -142,11 +143,14 @@ button[type="submit"] {
 .add-to-cart:where(:hover, :focus-visible),
 .remove-button:where(:hover, :focus-visible),
 button[type="submit"]:where(:hover, :focus-visible) {
-    background-color: var(--secondary-clr-400);
+    background-color: var(--primary-clr-100);
+    color: var(--secondary-clr-900);
+    border: 2px solid var(--secondary-clr-300);
+    padding: .5rem 2rem;
 }
 
-button[type="submit"] a {
-    color: var(--primary-clr-100);
+.add-to-cart:active {
+    background-color: black;
 }
 
 @media (width < 600px) {

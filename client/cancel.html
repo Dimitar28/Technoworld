@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+       <meta http-equiv="refresh" content="4;url=https://technowrld.netlify.app">
+    <title>Canceled purchase page</title>
+    <style>
+        .cancel{
+            position: relative;
+            color:white;
+            text-align: center;
+            padding: .5rem;
+        }
+        .cancel::after{
+        content: '';
+        position: absolute;
+        z-index:-1;
+        background: hsl(0, 60%, 40%);
+        inset: 0;
+        transform: skewY(-5deg);
+        }
+    </style>
 </head>
 <body>
-    Canceled pruchase
+    <div class="cancel">
+        <h1>Canceled purchase</h1>
+        <h2>Redirecting back to the main page in <span id="seconds">4</span> seconds.</h2>
+    </div>
+    <script>
+        const seconds = document.querySelector("#seconds")
+        let timeLeft = 4;
+        let countdown = setInterval(()=>{
+            timeLeft--;
+          seconds.textContent = timeLeft;
+          if(timeLeft === 0) clearInterval(countdown)
+        },1000);
+    </script>
 </body>
 </html>

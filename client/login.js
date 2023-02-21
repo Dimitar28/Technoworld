@@ -67,3 +67,28 @@ function togglePasswordVisibility(button) {
     }
   })
 }
+//generate random password
+const generatePassButton = document.querySelector("#generate-btn");
+const generatePassInput = document.querySelector("#generate-input")
+generatePassButton.addEventListener("click", () => {
+  const password = generatePassword(11);
+  generatePassInput.value = password;
+})
+function generatePassword(length) {
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+  return password;
+}
+//copy the random password to the clipboard
+const copyBtn = document.getElementById("copy-btn");
+copyBtn.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(generatePassInput.value);
+  } catch (err) {
+    alert("Failed to copy password: ", err);
+  }
+})

@@ -7,7 +7,7 @@
 
 :root {
   scroll-behavior: smooth;
-  scroll-padding-top: 3rem;
+  scroll-padding-top: 2rem;
   --primary-clr-100: hsl(0, 0%, 100%);
   --secondary-clr-300: hsl(358, 72%, 50%);
   --secondary-clr-400: hsl(0, 60%, 40%);
@@ -73,12 +73,14 @@ img {
   min-height: 100vh;
   position: fixed;
   inset: 0;
-  background-color: hsla(0, 0%, 100%, 0.8);
+  background-color: hsla(0, 0%, 100%, 0.7);
   z-index: 9;
 }
 
 .loading-spinner {
-  border-top: 4px solid var(--secondary-clr-400);
+  background: conic-gradient(#0000 10%, var(--secondary-clr-300));
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 10px), #000);
   border-radius: 50%;
   width: 5rem;
   aspect-ratio: 1;
@@ -86,12 +88,8 @@ img {
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
+  to {
+    rotate: 1turn;
   }
 }
 
@@ -121,22 +119,32 @@ img {
   border: 2px solid var(--secondary-clr-900);
 }
 
+.fa-chevron-down {
+  font-size: clamp(.6rem, 1.1vw, 1.5rem);
+}
+
 /*main content */
 
 .notification {
   background-color: hsl(39 92% 52% / 0.4);
   color: var(--secondary-clr-900);
-  padding: 0.3rem;
+  padding: .5rem;
   position: relative;
+  --mask:
+    conic-gradient(from 145deg at top, #0000, #000 1deg 69deg, #0000 70deg) top/8.00px 51% repeat-x,
+    conic-gradient(from -35deg at bottom, #0000, #000 1deg 69deg, #0000 70deg) bottom/8.00px 51% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+
 }
 
 .notification h2 {
-  font-size: clamp(1.1rem, 1.5vw, 1.8rem);
+  font-size: clamp(.9rem, 1.5vw, 1.8rem);
   margin-bottom: .3rem;
 }
 
 .glow-on-hover {
-  padding: .5rem;
+  padding: .4rem;
   border: none;
   outline: none;
   background-color: var(--secondary-orange-clr);
@@ -144,10 +152,7 @@ img {
   position: relative;
   animation: glowing 20s linear infinite;
   z-index: 0;
-}
-
-.glow-on-hover a {
-  font-size: clamp(1rem, 1.3vw, 1.6rem);
+  font-size: clamp(.9rem, 1.3vw, 1.8rem);
 }
 
 .glow-on-hover:before {
@@ -184,13 +189,13 @@ img {
 
 .close-btn {
   position: absolute;
-  inset: 0.3rem 0.3rem auto auto;
+  inset: 0.5rem 0.3rem auto auto;
   cursor: pointer;
   background-color: var(--secondary-clr-400);
   color: var(--primary-clr-100);
-  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  font-size: clamp(.8rem, 1.2vw, 1.4rem);
   transition: .3s;
-  padding-inline: .3rem;
+  padding: .3rem;
   border: transparent;
 }
 
@@ -209,7 +214,7 @@ img {
 }
 
 select {
-  font-size: 1rem;
+  font-size: 1.1rem;
   border-radius: 100vw;
 }
 
@@ -222,12 +227,20 @@ select {
 }
 
 .subscribe {
-  font-size: clamp(1.3rem, 1.8vw, 2.5rem);
+  font-size: clamp(1.4rem, 1.8vw, 2.5rem);
   font-weight: var(--fw-normal);
+  background-image: conic-gradient(from 90deg at 40% -25%, #ff6e06, #d76f0d, #ee6907, #e6390a, #de0d0d, #d61039, #cf1261, #c71585, #cf1261, #d61039, #de0d0d, #ee6907, #f79d03);
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .chatbot {
-  background-color: hsl(39 92% 52% / 0.6);
+  background: linear-gradient(235deg, hsl(39 92% 52% / 0.6) 60%, var(--secondary-clr-300) 100%);
+  padding-block: 1rem;
+  --mask: radial-gradient(15px at 50% 15px, #0000 97%, #000) 50% -15px/ 27.75px 100%;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
 
 .chatbot h2,
@@ -257,8 +270,16 @@ select {
   position: relative;
   gap: 1rem;
   margin-top: 1rem;
+  padding-block: 2rem;
   background-color: var(--secondary-clr-400);
   color: var(--primary-clr-100);
+  --mask:
+    radial-gradient(52.57px at 50% 71.25px, #000 99%, #0000 101%) calc(50% - 50px) 0/100px 51% repeat-x,
+    radial-gradient(52.57px at 50% -46.25px, #0000 99%, #000 101%) 50% 25px/100px calc(51% - 25px) repeat-x,
+    radial-gradient(52.57px at 50% calc(100% - 71.25px), #000 99%, #0000 101%) calc(50% - 50px) 100%/100px 51% repeat-x,
+    radial-gradient(52.57px at 50% calc(100% + 46.25px), #0000 99%, #000 101%) 50% calc(100% - 25px)/100px calc(51% - 25px) repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
 }
 
 .easter-egg-section *:not(#hintButton) {
@@ -303,7 +324,7 @@ select {
 
 #hintContainer {
   position: absolute;
-  top: 0;
+  top: 2rem;
   right: 1rem;
   background-color: var(--secondary-orange-clr);
   color: var(--secondary-clr-900);
@@ -320,6 +341,7 @@ footer {
   color: var(--primary-clr-100);
   font-weight: var(--fw-normal);
   padding: 1.5rem;
+  border-radius: 100vw;
 }
 
 /*Shooping section */
@@ -339,22 +361,27 @@ footer {
 }
 
 .shopping-buttons {
-  gap: 2rem;
+  gap: 3rem;
 }
 
-.shopping-buttons button,
-.checkout-button {
+.shopping-buttons button {
   background-color: var(--secondary-clr-400);
   border: none;
   color: var(--primary-clr-100);
   padding: 0.7rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: .3s;
 }
 
-.shopping-buttons button:hover,
-.checkout-button:hover {
+.shopping-buttons button:hover {
   background-color: var(--secondary-clr-300);
+}
+
+.disclaimer {
+  margin-top: 1rem;
+  font-size: clamp(.8rem, 1vw, 1.3rem);
+  max-width: 70ch;
+  margin-inline: auto;
 }
 
 @media (width < 800px) {

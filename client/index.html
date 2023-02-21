@@ -13,8 +13,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
+    <script src="https://js.stripe.com/v3/" defer></script>
     <script src="main.js" defer></script>
-    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <!-- Loader -->
@@ -34,17 +34,20 @@
               ><i class="fa fa-house"></i> Home</a
             >
           </li>
-          <li class="dropdown">
-            <button class="nav-item nav-button">
-              <i class="fa fa-desktop"></i> Pro<span class="special-letter"
-                >d</span
-              >ucts
-            </button>
-            <div class="dropdown-content">
-              <a href="#" class="nav-item text-center">Computers</a>
-              <a href="#" class="nav-item text-center">Laptops</a>
-              <a href="#" class="nav-item text-center">Acessories</a>
-            </div>
+           <div class="dropdown">
+            <a href="#" class="nav-item">
+               <i class="fa fa-desktop"></i>
+               Pro<span class="special-letter">d</span>ucts
+               <i class="fa-solid fa-chevron-down"></i>
+               </a>
+           <div class="menu text-center">
+            <a class="menu-item nav-item" href="#">Computers</a>
+            <a class="menu-item nav-item" href="#">Laptops</a>
+            <a class="menu-item nav-item" href="#">Monitors</a>
+            <a class="menu-item nav-item" href="#">Keyboards/Mouses</a>
+            <a class="menu-item nav-item" href="#">Other accessories</a>
+          </div>
+           </div>
           </li>
           <li>
             <input
@@ -76,8 +79,8 @@
           We have just implemented a brand new chatbot! More information below.
         </h2>
         <button class="close-btn">Close</button>
-        <button class="glow-on-hover | cta" type="button">
-          <a href="#chatbot" class="cta-link">Go to announcement!</a>
+        <button class="glow-on-hover | cta" type="button" onclick="window.location.href='#chatbot'">
+         Go to announcement!
         </button>
       </div>
       <form id="filter-form" class="filter-form flex text-center">
@@ -413,7 +416,7 @@
               alt="Computer 3"
               class="card-image"
             />
-            <h3 class="card-name">HEADSET JBL QUANTUM ONE BLK</h3>
+            <h3 class="card-name">HEADSET JBL QUANTUM ONE BLACK</h3>
             <p class="price-tag">Price:$<span class="price">209</span></p>
           </a>
           <button class="add-to-cart">
@@ -580,7 +583,11 @@
       <div class="shopping-buttons">
         <button class="checkout-button">Checkout</button>
         <button class="back-button">Back</button>
+        <button class="clear-button">Clear all</button>
       </div>
+      <p class="disclaimer">Disclaimer:When you visit the website and press the checkout button for the first time,it will take longer than usual to go to the checkout,so be patient
+        
+      </p>
     </section>
     <!-- Easter egg section  -->
     <section class="easter-egg-section flex">
@@ -627,10 +634,8 @@
           us.
         </p>
       </div>
-      <button type="submit" class="cta-1">
-        <a href="./chatbot-page/index.html" target="_blank" class="cta-link-1"
-          >Go talk to our chatbot</a
-        >
+      <button type="submit" onclick="window.location.href='./chatbot-page/index.html'">
+        Go talk to our chatbot
       </button>
     </section>
     <!-- footer -->

@@ -6,9 +6,12 @@ const easterEggSection = document.querySelector(".easter-egg-section")
 const productContainer = document.querySelector(".featured-components");
 let products = document.querySelectorAll(".card");
 const user = JSON.parse(localStorage.getItem("user"))
+let shoppingItems = [];
+const storedShoppingItems = JSON.parse(localStorage.getItem("shoppingItems"));
+const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY76r3roo17cx29lX8UpqNEKLwhxlnW8opiX8YQuU200BOseCMVi");
 //loader
-window.addEventListener("DOMContentLoaded", function () {
-  const loading = document.querySelector(".loading");
+const loading = document.querySelector(".loading");
+window.addEventListener("DOMContentLoaded", () => {
   loading.style.display = "none";
 });
 //managing login/logout status
@@ -23,14 +26,12 @@ function logIn(link) {
 }
 function logOut(link) {
   link.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log in';
-  link.href = "index.html";
+  link.href = "/";
   localStorage.setItem("loginState", "Log In");
 }
 const loginState = localStorage.getItem("loginState");
 if (loginState === "Log Out") loginLogoutLink.innerHTML = '<i class="fa-regular fa-address-book"> </i> Log out';
 
-const shoppingItems = [];
-const storedShoppingItems = JSON.parse(localStorage.getItem("shoppingItems"));
 // Check if there are any stored shopping items
 if (storedShoppingItems !== null) {
   // Add the stored items to the shopping list
@@ -94,51 +95,47 @@ function goToShoppingPage() {
   mainPage.style.display = "none";
   easterEggSection.style.display = "none";
 }
+const checkoutButton = document.querySelector(".checkout-button");
+checkoutButton.addEventListener("click", CheckOutItems);
 async function CheckOutItems() {
-  const checkoutButton = document.querySelector(".checkout-button");
-  checkoutButton.addEventListener("click", async () => {
-    if (shoppingItems.length === 0 || !user) {
-      shoppingItems.length === 0 ? alert("Your shopping cart is empty!") : alert("Log in with your account to purchase the selected items");
-    }
+  loading.style.display = "grid"
+  if (shoppingItems.length === 0 || !user) {
+    shoppingItems.length === 0 ? alert("Your shopping cart is empty!") : alert("Log in with your account to purchase the selected items");
+    return
+  }
 
-    // Create an array of line items for the checkout session
-    const lineItems = shoppingItems.map(item => ({
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: item.name,
-          images: [item.image],
-        },
-        unit_amount: item.price * 100,
+  // Create an array of line items for the checkout session
+  const lineItems = shoppingItems.map(item => ({
+    price_data: {
+      currency: 'usd',
+      product_data: {
+        name: item.name,
+        images: [item.image],
       },
-      quantity: 1,
-    }));
-    // Create a checkout session on the server using Stripe API
-    const response = await fetch("https://technoworld-atum.onrender.com/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ lineItems }),
-    });
-    const data = await response.json();
-
-    //reseting the shopping cart items
-    shoppingItems.length = 0;
-    shoppingList.innerHTML = "";
-    localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
-    shoppingList.style.display = "none";
-    updateCartCount();
-
-    // Redirect the user to the Stripe checkout page
-    const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY76r3roo17cx29lX8UpqNEKLwhxlnW8opiX8YQuU200BOseCMVi");
-    await stripe.redirectToCheckout({ sessionId: data.sessionId });
-
+      unit_amount: item.price * 100,
+    },
+    quantity: 1,
+  }));
+  // Create a checkout session on the server using Stripe API
+  const response = await fetch("https://technoworld-atum.onrender.com/create-checkout-session", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ lineItems }),
   });
+
+  //reseting the shopping cart items
+  shoppingItems.length = 0;
+  shoppingList.innerHTML = "";
+  localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
+  shoppingList.style.display = "none";
+  updateCartCount();
+
+  // Redirect the user to the Stripe checkout page
+  const data = await response.json();
+  await stripe.redirectToCheckout({ sessionId: data.sessionId });
 }
-
-CheckOutItems();
-
 const backButton = document.querySelector(".back-button");
 backButton.addEventListener("click", (e) => {
   backToMainPage();
@@ -148,16 +145,23 @@ function backToMainPage() {
   mainPage.style.display = "grid";
   easterEggSection.style.display = "flex";
 }
-
-const dropdownLinks = document.querySelectorAll(".dropdown > button");
-dropdownLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    // Toggle the dropdown content
-    const dropdownContent = e.target.nextElementSibling;
-    dropdownContent.style.display =
-      dropdownContent.style.display === "block" ? "none" : "block";
-  });
+const removeAllButton = document.querySelector(".clear-button")
+removeAllButton.addEventListener("click", () => {
+  // Remove all items from the shopping cart
+  shoppingList.innerHTML = "";
+  shoppingItems = [];
+  localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
+  updateCartCount();
 });
+//dropdown working on mobile
+const dropDownButton = document.querySelector(".dropdown");
+const dropDownMenu = document.querySelector(".menu")
+dropDownButton.addEventListener("touchstart", () => {
+  dropDownMenu.style.visibility =
+    dropDownMenu.style.visibility === "visible" ? "hidden" : "visible"
+  dropDownMenu.style.opacity =
+    dropDownMenu.style.opacity === "1" ? "0" : "1"
+})
 const progressBar = document.querySelector(".scroll-tracker");
 window.addEventListener("scroll", () => {
   let totalHeight = document.body.scrollHeight - window.innerHeight; // Get the total scrollable height of the page
@@ -251,11 +255,10 @@ emailForm.addEventListener(
   "submit",
   (e) => {
     e.preventDefault();
-    if (emailInput.value === "") return alert("Enter a valid email adress");
+    if (emailInput.value === "") return alert("Enter your email adress");
     else alert("Congratulations! You have subscribed to our newsletter");
     emailForm.reset();
   },
-
 );
 //easter egg section
 const easterEggForm = document.querySelector('.easter-egg-form');
@@ -277,7 +280,7 @@ hintButton.addEventListener("click", () => {
     const hint = hints[index];
     usedHints.push(hint);
     hints.splice(index, 1);
-    hintContainer.innerHTML = hint + " <i class='fa fa-close'> </i>";
+    hintContainer.innerHTML = hint + "<i class='fa fa-close'> </i>";
     const closeHintButton = document.querySelector('.fa-close');
     closeHintButton.addEventListener('click', () => {
       hintContainer.innerHTML = ""
@@ -285,17 +288,6 @@ hintButton.addEventListener("click", () => {
   }
 });
 console.log("Why are you here.There is nothing to see: %co", "text-decoration: underline");
-//impoving the focus functionality on certain buttons
-const ctaButton = document.querySelector(".cta");
-const ctaButton1 = document.querySelector(".cta-1");
-const ctaLink = document.querySelector(".cta-link");
-const ctaLink1 = document.querySelector(".cta-link-1");
-ctaButton.addEventListener("click", () => {
-  ctaLink.click();
-})
-ctaButton1.addEventListener("click", () => {
-  ctaLink1.click();
-})
 //getting the current year for the copyright text
 const year = document.querySelector("#year");
 year.textContent = new Date().getFullYear();
@@ -306,7 +298,7 @@ function animateTrail(e, interacting) {
   const x = e.clientX - trail.offsetWidth / 2;
   const y = e.clientY - trail.offsetHeight / 2
   const keyframes = {
-    transform: trail.style.transform = `translate(${x}px, ${y}px) scale(${interacting ? 2.5 : 1})`
+    transform: trail.style.transform = `translate(${x}px, ${y}px) scale(${interacting ? 1.8 : 1})`
   }
   trail.animate(keyframes, {
     duration: 800,
@@ -315,7 +307,7 @@ function animateTrail(e, interacting) {
   trail.style.opacity = 1;
   setTimeout(() => {
     trail.style.opacity = 0;
-  }, 1600);
+  }, 1000);
 }
 document.addEventListener("mousemove", (e) => {
   const interactableCard = e.target.closest(".card");
