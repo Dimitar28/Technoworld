@@ -282,7 +282,7 @@ select {
   mask: var(--mask);
 }
 
-.easter-egg-section *:not(#hintButton) {
+.easter-egg-section * {
   margin-inline: 1rem;
 }
 
@@ -380,7 +380,7 @@ footer {
 .disclaimer {
   margin-top: 1rem;
   font-size: clamp(.8rem, 1vw, 1.3rem);
-  max-width: 70ch;
+  max-width: 60ch;
   margin-inline: auto;
 }
 
@@ -423,6 +423,12 @@ footer {
     max-width: 100%;
     margin-inline: 1rem;
     right: 0;
+  }
+}
+
+@media (width <500px) {
+  .disclaimer {
+    margin-inline: 2rem;
   }
 }
 

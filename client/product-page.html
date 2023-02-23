@@ -10,7 +10,7 @@
   </head>
   <body>
     <main>
-      <section class="product-info text-center">
+      <section class="product-info ">
         <div id="product-image"></div>
         <div class="product-descr">
           <h3 id="product-name"></h3>
@@ -21,6 +21,33 @@
           </button>
         </div>
       </section>
+      <div class="main-section">
+        <h2>Product Information</h2>
+        <input type="radio" id="description-tab" name="tabs" checked>
+        <label for="description-tab">Desciption</label>
+        <input type="radio" id="characteristics-tab" name="tabs" >
+        <label for="characteristics-tab">Characteristics</label>
+        <input type="radio" id="availability-tab" name="tabs" >
+        <label for="availability-tab">Availability</label>
+        <input type="radio" id="reviews-tab" name="tabs" >
+        <label for="reviews-tab">Reviews</label>
+        <section id="description-content">
+          <h3>Desciption</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos odio fuga illum quisquam, nisi voluptatem, porro aut id molestias libero, minus asperiores reprehenderit rem ut non aliquam ad totam fugit.</p>
+        </section>
+        <section id="characteristics-content">
+          <h3>Characteristics</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos odio fuga illum quisquam, nisi voluptatem, porro aut id molestias libero, </p>
+        </section>
+        <section id="availability-content">
+          <h3>Availability</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos odio fuga illum quisquam, nisi voluptatem, porro aut id molestias libero, minus asperiores reprehenderit rem ut non aliquam ad totam fugit. minus asperiores reprehenderit rem ut non aliquam ad totam fugit.</p>
+        </section>
+        <section id="reviews-content">
+          <h3>Reviews</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos odio fuga illum quisquam, nisi voluptatem, porro aut id molestias libero, minus asperiores reprehenderit rem ut non aliquam ad totam fugit.</p>
+        </section>
+      </div>
     </main>
     <script>
       function validateQueryString(query) {

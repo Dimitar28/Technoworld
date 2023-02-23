@@ -85,10 +85,17 @@ function generatePassword(length) {
 }
 //copy the random password to the clipboard
 const copyBtn = document.getElementById("copy-btn");
+const copyPassText = document.querySelector(".copy-pass-text")
 copyBtn.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(generatePassInput.value);
   } catch (err) {
     alert("Failed to copy password: ", err);
   }
+  copyPassText.style.opacity = "1";
+  copyPassText.style.visibility = "visible";
+  setTimeout(() => {
+    copyPassText.style.opacity = "0";
+    copyPassText.style.visibility = "hidden";
+  }, 2000)
 })
