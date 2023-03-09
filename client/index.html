@@ -69,11 +69,38 @@
               <span class="cart-count">0</span>
             </a>
           </li>
+          <li>
+             <div class="dropdown" id="account-link" >
+            <a href="#" class="nav-item">
+               <i class="fa fa-desktop"></i>
+               Account
+               <i class="fa-solid fa-chevron-down"></i>
+               </a>
+           <div class="menu text-center | account-menu" >
+           
+          </div>
+           </div>
+          </li>
         </ul>
       </nav>
       <div class="scroll-tracker"></div>
     </header>
     <main>
+      <form action="" class="color-picker" name="themes">
+        <fieldset>
+          <legend class="sr-only" >Pick a color scheme</legend>
+          <label for="theme" class="sr-only" >Default</label>
+          <input type="radio" name="theme" id="default" checked>
+           <label for="theme" class="sr-only" >Pink theme</label>
+          <input type="radio" name="theme" id="pink">
+           <label for="theme" class="sr-only" >Blue theme</label>
+          <input type="radio" name="theme" id="blue">
+           <label for="theme" class="sr-only" >Green theme</label>
+          <input type="radio" name="theme" id="green">
+           <label for="theme" class="sr-only" >Dark theme</label>
+          <input type="radio" name="theme" id="purple">
+        </fieldset>
+      </form>
       <div class="notification text-center">
         <h2>
           We have just implemented a brand new chatbot! More information below.
@@ -105,6 +132,11 @@
       <h2 class="not-found text-center">Product not found</h2>
       <!--Products -->
       <h2 class="feat text-center m-block">Featured items</h2>
+      <div id="compare-container">
+  <h2>Compare Products</h2>
+  <ul id="compare-list" class=" text-center"></ul>
+  <button id="clear-compare">Clear Compare List</button>
+</div>
       <section class="featured-components">
         <div
           class="card text-center"
@@ -129,6 +161,7 @@
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
+          <button class="compare-btn" data-product="1">Compare</button>
         </div>
         <div
           class="card text-center"
@@ -155,6 +188,7 @@
           <button class="add-to-cart">
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
+          <button class="compare-btn" data-product="2">Compare</button>
         </div>
         <div
           class="card text-center"

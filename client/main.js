@@ -13,6 +13,8 @@ const stripe = Stripe("pk_test_51MWJzQBPlfaVkC5QNcfh131Z6aj0WrUpLfieMkKfAUgV2lvY
 const loading = document.querySelector(".loading");
 window.addEventListener("DOMContentLoaded", () => {
   loading.style.display = "none";
+  //setting the selected theme 
+  setTheme();
 });
 //managing login/logout status
 const loginLogoutLink = document.querySelector(".login-logout");
@@ -46,12 +48,57 @@ buttons.forEach((button) => {
     addToCart(e.target); // adds the product to the cart
   });
 });
-function addToCart(button) {
-  shoppingList.style.display = "flex";
+const compareBtns = document.querySelectorAll(".compare-btn");
+const compareList = document.getElementById("compare-list");
+const clearCompareBtn = document.getElementById("clear-compare");
+let compareProducts = [];
+
+compareBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const product = createItem(btn);
+    compareProducts.push(product);
+    showCompareList();
+  });
+});
+
+function showCompareList() {
+  compareList.innerHTML = "";
+  compareProducts.forEach(product => {
+    const listItem = document.createElement("li");
+    const image = document.createElement("img");
+    image.src = product.image;
+    const name = document.createElement("p");
+    name.textContent = product.name;
+    const price = document.createElement("p");
+    price.textContent = product.price;
+    listItem.appendChild(image);
+    listItem.appendChild(name);
+    listItem.appendChild(price);
+    compareList.appendChild(listItem);
+  });
+  if (compareProducts.length > 0) {
+    document.getElementById("compare-container").classList.add("visible");
+  } else {
+    document.getElementById("compare-container").classList.remove("visible");
+  }
+}
+
+clearCompareBtn.addEventListener("click", () => {
+  compareProducts = [];
+  showCompareList();
+});
+
+function createItem(button) {
   const itemName = button.parentElement.querySelector(".card-name").textContent;
   const itemImage = button.parentElement.querySelector(".card-image").src;
   const itemPrice = button.parentElement.querySelector(".price").textContent;
-  const item = { name: itemName, image: itemImage, price: itemPrice }; // Create an object representing the item/product
+  const productId = button.dataset.product;
+  return { name: itemName, image: itemImage, price: itemPrice, id: productId };
+}
+function addToCart(button) {
+  shoppingList.style.display = "flex";
+
+  const item = createItem(button)// Create an object representing the item/product
   shoppingItems.push(item); // Add the item to the array of shopping items
   localStorage.setItem("shoppingItems", JSON.stringify(shoppingItems));
 
@@ -170,6 +217,27 @@ window.addEventListener("scroll", () => {
   let scrollPercentage = (window.pageYOffset / totalHeight) * 100; // Calculate the percentage of the page that has been scrolled
   progressBar.style.width = scrollPercentage + "%";
 });
+//color theme picker
+const colorThemes = document.querySelectorAll('[name="theme"]');
+
+function storeTheme(theme) {
+  localStorage.setItem("theme", theme);
+}
+function setTheme() {
+  const activeTheme = localStorage.getItem("theme");
+  colorThemes.forEach((themeOption) => {
+    if (themeOption.id === activeTheme) {
+      themeOption.checked = true;
+    }
+  });
+}
+
+colorThemes.forEach((themeOption) => {
+  themeOption.addEventListener("input", () => {
+    storeTheme(themeOption.id);
+  });
+});
+
 const notification = document.querySelector(".notification");
 const closeBtn = document.querySelector(".close-btn");
 closeBtn.addEventListener("click", () => {
@@ -293,6 +361,17 @@ console.log("Why are you here.There is nothing to see: %co", "text-decoration: u
 //getting the current year for the copyright text
 const year = document.querySelector("#year");
 year.textContent = new Date().getFullYear();
+//user info
+if (user) {
+  const accountLink = document.getElementById("account-link");
+  accountLink.style.display = "block"
+}
+const accoutnMenu = document.querySelector(".account-menu");
+accoutnMenu.innerHTML = `
+<p>Username: ${user.username} </p>
+<p>Email: ${user.email}</p>
+<p>Password: ${user.password} </p>
+<button> More details </button>`
 
 //cursor animation
 const trail = document.querySelector(".trail")

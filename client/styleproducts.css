@@ -72,6 +72,7 @@
 }
 
 .card {
+    background-color: var(--primary-clr-100);
     opacity: 0;
     translate: -50px;
     max-width: 90%;

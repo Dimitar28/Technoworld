@@ -11,16 +11,19 @@ signUpForm.addEventListener("submit", e => {
   e.preventDefault();
   const signUpUserName = document.querySelector("#sign-up-username").value;
   const signUpPassword = document.querySelector("#sign-up-password").value;
-  createUser(signUpUserName, signUpPassword)
+  const signUpEmail = document.querySelector("#sign-up-email").value;
+  createUser(signUpUserName, signUpPassword, signUpEmail)
 })
-function createUser(userName, password) {
+function createUser(username, password, email) {
   const hasCapital = /[A-Z]/.test(password);
   const hasNumber = /\d/.test(password);
   const signUpUser = {
-    signUpUserName: userName,
-    signUpPassword: password
+    username: username,
+    email: email,
+    password: password,
+
   }
-  if (userName === '' || password === '') return alert("Enter your information");
+  if (username === '' || password === '') return alert("Enter your information");
   if (password.length < 6) return alert("Password must contain at least 6 charachters")
   if (!hasCapital) return alert("Password must contain capitalized letters")
   if (!hasNumber) return alert("Password must contain numbers")
@@ -40,9 +43,9 @@ signInForm.addEventListener("submit", e => {
 })
 function authUser(userName, password) {
   if (userName === "" && password === "") return alert("Enter username and password");
-  if (userName !== user.signUpUserName && password !== user.signUpPassword) return alert("Incorrect username and password");
-  if (userName !== user.signUpUserName) return alert("Incorrect username");
-  if (password !== user.signUpPassword) return alert("Incorrect password");
+  if (userName !== user.username && password !== user.password) return alert("Incorrect username and password");
+  if (userName !== user.username) return alert("Incorrect username");
+  if (password !== user.password) return alert("Incorrect password");
   else {
     window.location.href = "index.html";
   }
@@ -69,20 +72,26 @@ function togglePasswordVisibility(button) {
 }
 //generate random password
 const generatePassButton = document.querySelector("#generate-btn");
-const generatePassInput = document.querySelector("#generate-input")
+const generatePassInput = document.querySelector("#generate-input");
+const rangeInput = document.querySelector(".range-box input");
+const slideNumber = document.querySelector(".slider-number")
 generatePassButton.addEventListener("click", () => {
-  const password = generatePassword(11);
+  const password = generatePassword();
   generatePassInput.value = password;
 })
-function generatePassword(length) {
-  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+function generatePassword() {
+  const charset = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
   let password = "";
-  for (let i = 0; i < length; i++) {
+  for (let i = 0; i < rangeInput.value; i++) {
     const randomIndex = Math.floor(Math.random() * charset.length);
     password += charset[randomIndex];
   }
   return password;
 }
+rangeInput.addEventListener("input", () => {
+  slideNumber.textContent = rangeInput.value;
+  generatePassword();
+})
 //copy the random password to the clipboard
 const copyBtn = document.getElementById("copy-btn");
 const copyPassText = document.querySelector(".copy-pass-text")

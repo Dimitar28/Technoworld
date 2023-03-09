@@ -80,7 +80,7 @@ form.sign-in-form {
 }
 
 .input-field:last-of-type {
-  width: min(75%, 380px);
+  width: min(80%, 380px);
 }
 
 .input-field i {
@@ -107,7 +107,7 @@ form.sign-in-form {
 .view-pass,
 #copy-btn {
   position: absolute;
-  right: 1rem;
+  right: .7rem;
   cursor: pointer;
   border: transparent;
   background-color: transparent;
@@ -132,7 +132,7 @@ form.sign-in-form {
 }
 
 #generate-btn {
-  width: 7.5rem;
+  width: 8rem;
   color: var(--primary-clr-900);
   border: 2px solid var(--primary-clr-900);
 }
@@ -147,6 +147,10 @@ form.sign-in-form {
   text-align: center;
   font-size: clamp(.9rem, 1.1vw, 1.5rem);
   opacity: .7;
+}
+
+.range-box input {
+  accent-color: var(--secondary-clr-400);
 }
 
 .social-text {
@@ -467,7 +471,7 @@ form.sign-in-form {
   }
 
   .panel .content {
-    padding: .5rem 1rem;
+    padding: 0 1rem;
   }
 
   .container {
@@ -480,7 +484,7 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode:before {
-    bottom: 25%;
+    bottom: 22%;
     left: 50%;
   }
 }

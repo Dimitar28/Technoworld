@@ -61,6 +61,10 @@
   visibility: hidden;
 }
 
+.account-menu {
+  width: clamp(180px, 25vw, 400px);
+}
+
 .menu::before {
   content: '';
   top: -.5rem;
